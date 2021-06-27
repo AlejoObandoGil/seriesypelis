@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome', compact('posts')); //['posts' => $posts]
 });
 
+Route::get('admin', function () {
+    return view('admin.dashboard');
+});
+
 Route::get('/posts', function () {
     return App\Models\Post::all();
 });
