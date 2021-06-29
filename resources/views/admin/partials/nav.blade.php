@@ -2,24 +2,25 @@
 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
-    <li class="item menu-open">
-    <a href="#" class="nav-link active">
-        <i class="nav-icon fas fa-home"></i>
-        <p>
-        Inicio
-        <i class="right fas fa-home"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-        <a href="#"><i class="fa fa-bars"></i> <span>Blog</span> 
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
+    <li class="nav-link active" class="header">MENU</li>
+    <br>
+    <li {{ request()->is('admin') ? 'class=active' : '' }}>    
+        <a href="{{ route('admin.admin') }}">
+            <i class="nav-icon fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+    </li>
+    <br>
+    <li class="treeview" {{ request()->is('posts') ? 'active' : '' }}>
+        <a  href="#"><i class="nav-icon fa fa-bars"></i> <span>Blog</span> 
+            <span class="pull-down-container">
+                <i class="fa fa-angle-down pull-up"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="{{ route('admin.posts.index') }}"> <i class="fa fa-eye"></i> Lista de Post</a></li>
+            <li {{ request()->is('posts') ? 'class=active' : '' }}><a href="{{ route('admin.posts.index') }}"> <i class="nav-icon fa fa-eye"></i> Lista de Post</a></li>
             
-            <li><a href="#"> <i class="fa fa-plus"></i> Crear Post <span class="right badge badge-danger">New</span></a></li>            
+            <li><a href="#"> <i class="nav-icon fa fa-plus"></i> Crear Post <span class="right badge badge-danger">New</span></a></li>            
         </ul>    
         {{-- <li class="nav-item">
         <a href="#" class="nav-link active">
@@ -33,7 +34,6 @@
             <p>Inactive Page</p>
         </a>
         </li> --}}
-    </ul>
     </li>
 
 </ul>
