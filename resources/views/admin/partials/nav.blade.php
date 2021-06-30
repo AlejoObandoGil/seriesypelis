@@ -18,9 +18,10 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li {{ request()->is('posts') ? 'class=active' : '' }}><a href="{{ route('admin.posts.index') }}"> <i class="nav-icon fa fa-eye"></i> Lista de Post</a></li>
-            
-            <li><a href="#"> <i class="nav-icon fa fa-plus"></i> Crear Post <span class="right badge badge-danger">New</span></a></li>            
+            <br>
+            <li {{ request()->is('posts') ? 'class=active' : '' }}><a href="{{ route('admin.posts.index') }}"> <i class="nav-icon fa fa-eye"></i> Lista de Publicaciones</a></li>
+            <br>
+            <li {{ request()->is('posts') ? 'class=active' : '' }}><a href="{{ route('admin.posts.create') }}"> <i class="nav-icon fa fa-plus"></i> Crear Publicaciones <span class="right badge badge-danger"> New </span></a></li>            
         </ul>    
         {{-- <li class="nav-item">
         <a href="#" class="nav-link active">

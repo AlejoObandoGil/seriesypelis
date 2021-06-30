@@ -10,6 +10,7 @@ Route::group([
 function(){
     Route::get('posts', 'PostController@index')->name('admin.posts.index');
     Route::get('admin', 'AdminController@index')->name('admin.admin');
+    Route::get('create', 'PostController@create')->name('admin.posts.create');
 });
 
 // Authentication Routes...
