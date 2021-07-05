@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $guarded = [];
     protected $dates = ['published_at'];
 
-    public function category($value=''){
+    public function getRouteKeyName(){
+
+        return 'url';
+    }
+
+    public function category(){
 
         return $this->belongsTo(Category::class);
     }
@@ -17,5 +24,12 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
 
+    }
+    // metodo para validar post activos o correctos
+    public function scopePublished($query)
+    {
+        $query->whereNotNull('published_at')
+        ->where('published_at', '<=', Carbon::now())
+        ->latest('published_at');
     }
 }

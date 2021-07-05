@@ -1,8 +1,9 @@
 <?php
 
+use Carbon\Carbon;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 
@@ -22,6 +23,7 @@ class PostsTableSeeder extends Seeder
         $post = new Post;
         // llamado a los valores de la BD
         $post ->title = "The Godfather";
+        $post ->url = str_slug("The Godfather");
         $post ->description = "Pelicula de drama, gansters";
         $post ->body = "El padrino (título original en inglés: The Godfather1​) es una película estadounidense de 1972 dirigida por Francis Ford Coppola. La película fue producida por Albert S. Ruddy, de la compañía Paramount Pictures. Está basada en la novela homónima (que a su vez está basada en la familia real de los Mortillaro de Sicilia, Italia), de Mario Puzo, quien adaptó el guion junto a Coppola y Robert Towne, este último sin ser acreditado.
         
@@ -34,7 +36,9 @@ class PostsTableSeeder extends Seeder
         $post = new Post;
         // llamado a los valores de la BD
         $post ->title = "Peaky Blinders";
-        $post ->description = "Pelicula de drama, gansters";
+        $post ->url = str_slug("Peaky Blinders");
+
+        $post ->description = "Serie de drama, gansters";
         $post ->body = "Peaky Blinders es una serie de televisión inglesa de drama histórico, emitida por el canal BBC Two. La serie está protagonizada por Cillian Murphy y se centra en una familia de gánsteres de Birmingham, durante los años veinte y del ascenso de su jefe, Thomas Shelby.
 
         Los creadores de la serie se basaron en los Peaky Blinders, una banda criminal que existió en la ciudad de Birmingham a mediados del siglo XX y que se caracterizaba porque cosía hojas de afeitar en sus gorras.1​
@@ -48,5 +52,41 @@ class PostsTableSeeder extends Seeder
         $category = new Category;
         $category->name = "Gansters";
         $category->save();
+
+        $category = new Category;
+        $category->name = "Drama";
+        $category->save();
+                
+        $category = new Category;
+        $category->name = "Comedia";
+        $category->save();
+
+        $category = new Category;
+        $category->name = "Terror";
+        $category->save();
+        
+        $category = new Category;
+        $category->name = "Ciencia Ficcion";
+        $category->save();
+
+        $tags = new Tag;
+        $tags->name = "Gansters";
+        $tags->save();
+
+        $tags = new Tag;
+        $tags->name = "Drama";
+        $tags->save();
+                
+        $tags = new Tag;
+        $tags->name = "Comedia";
+        $tags->save();
+
+        $tags = new Tag;
+        $tags->name = "Terror";
+        $tags->save();
+        
+        $tags = new Tag;
+        $tags->name = "Ciencia Ficcion";
+        $tags->save();
     }
 }

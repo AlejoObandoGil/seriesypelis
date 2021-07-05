@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'PagesController@home');
+Route::get('blog/{post}', 'PostsController@show');
 
 Route::group([
     // 'prefix' => 'admin',
@@ -11,6 +12,7 @@ function(){
     Route::get('posts', 'PostController@index')->name('admin.posts.index');
     Route::get('admin', 'AdminController@index')->name('admin.admin');
     Route::get('create', 'PostController@create')->name('admin.posts.create');
+    Route::post('posts', 'PostController@store')->name('admin.posts.store');
 });
 
 // Authentication Routes...
