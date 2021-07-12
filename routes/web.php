@@ -13,6 +13,9 @@ function(){
     Route::get('admin', 'AdminController@index')->name('admin.admin');
     Route::get('create', 'PostController@create')->name('admin.posts.create');
     Route::post('posts', 'PostController@store')->name('admin.posts.store');
+    Route::get('posts/{post}', 'PostController@edit')->name('admin.posts.edit');
+    Route::put('posts/{post}', 'PostController@update')->name('admin.posts.update');
+
 });
 
 // Authentication Routes...

@@ -21,7 +21,7 @@
             <br>
             <li {{ request()->is('posts') ? 'class=active' : '' }}><a href="{{ route('admin.posts.index') }}"> <i class="nav-icon fa fa-eye"></i> Lista de Publicaciones</a></li>
             <br>
-            <li {{ request()->is('posts') ? 'class=active' : '' }}><a href="{{ route('admin.posts.create') }}"> <i class="nav-icon fa fa-plus"></i> Crear Publicaciones <span class="right badge badge-danger"> New </span></a></li>            
+            <li><a href="#" data-toggle="modal" data-target="#exampleModal"> <i class="nav-icon fa fa-plus"></i> Crear Publicaciones <span class="right badge badge-danger"> New </span></a></li>            
         </ul>    
         {{-- <li class="nav-item">
         <a href="#" class="nav-link active">

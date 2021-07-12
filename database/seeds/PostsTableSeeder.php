@@ -19,6 +19,7 @@ class PostsTableSeeder extends Seeder
         // limpar la bd antes de llenar
         Post::truncate();
         Category::truncate();
+        Tag::truncate();
         // modelo Post instancia
         $post = new Post;
         // llamado a los valores de la BD
@@ -32,6 +33,8 @@ class PostsTableSeeder extends Seeder
         $post->category_id = 1;
         // guardar en la BD 
         $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Gansters']));
 
         $post = new Post;
         // llamado a los valores de la BD
@@ -48,6 +51,8 @@ class PostsTableSeeder extends Seeder
         $post->category_id = 1;
         // guardar en la BD 
         $post->save();
+
+        $post->tags()->attach(Tag::create(['name' => 'Drama']));
 
         $category = new Category;
         $category->name = "Gansters";
@@ -69,24 +74,24 @@ class PostsTableSeeder extends Seeder
         $category->name = "Ciencia Ficcion";
         $category->save();
 
-        $tags = new Tag;
-        $tags->name = "Gansters";
-        $tags->save();
+        // $tags = new Tag;
+        // $tags->name = "Gansters";
+        // $tags->save();
 
-        $tags = new Tag;
-        $tags->name = "Drama";
-        $tags->save();
+        // $tags = new Tag;
+        // $tags->name = "Drama";
+        // $tags->save();
                 
-        $tags = new Tag;
-        $tags->name = "Comedia";
-        $tags->save();
+        // $tags = new Tag;
+        // $tags->name = "Comedia";
+        // $tags->save();
 
-        $tags = new Tag;
-        $tags->name = "Terror";
-        $tags->save();
+        // $tags = new Tag;
+        // $tags->name = "Terror";
+        // $tags->save();
         
-        $tags = new Tag;
-        $tags->name = "Ciencia Ficcion";
-        $tags->save();
+        // $tags = new Tag;
+        // $tags->name = "Ciencia Ficcion";
+        // $tags->save();
     }
 }

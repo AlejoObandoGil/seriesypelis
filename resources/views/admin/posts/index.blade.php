@@ -14,9 +14,13 @@
 
 @section('content')
     
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Lista de Peliculas & Series</h3>
+<div class="card card-dark">
+    <div class="card-header">     
+        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> 
+            <i class="fa fa-plus"></i>Nueva Publicación</button>
+            <br>
+            <br>
+        <h3 class="card-title">Lista de Películas y Series</h3>    
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -95,6 +99,7 @@
         });
     });
 </script>
+
 
 @endpush
 
