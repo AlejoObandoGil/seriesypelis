@@ -25,6 +25,12 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
 
     }
+    // Un post puede tener muchas fotos
+    public function photos()
+    {
+        return $this->hasMany(Photo::class);
+    }
+
     // metodo para validar post activos o correctos
     public function scopePublished($query)
     {

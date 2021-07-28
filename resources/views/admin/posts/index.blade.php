@@ -2,7 +2,7 @@
 
 @section('header')
 
-<h1 class="m-0">{{ config('app.name')}} 
+<h1 class="m-0">{{ config('app.name')}}
     <small>Lista de Publicaciones</small>
 </h1>
 <ol class="breadcrumb">
@@ -13,14 +13,14 @@
 @stop
 
 @section('content')
-    
+
 <div class="card card-dark">
-    <div class="card-header">     
-        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> 
+    <div class="card-header">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-plus"></i>Nueva Publicación</button>
             <br>
             <br>
-        <h3 class="card-title">Lista de Películas y Series</h3>    
+        <h3 class="card-title">Lista de Películas y Series</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -44,7 +44,11 @@
                         <td>{{ $post->body }}</td>
                         <td>{{ $post->published_at }}</td>
                         <td>
-                            <a href="" class="btn btn-xs btn-info"><i class="fa fa-plus"></i></a>
+                            <a href="{{ route('posts.show', $post) }}"
+                                class="btn btn-xs btn-default"
+                                target="_blank">
+                                <i class="fa fa-eye"></i></a>
+                            <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-xs btn-info"><i class="fa fa-plus"></i></a>
                             <a href="" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
                         </td>
                     </tr>

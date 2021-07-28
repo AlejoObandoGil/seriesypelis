@@ -163,7 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href=" {{ route('admin.admin') }}" class="brand-link">
+    <a href=" {{ route('home') }}" class="brand-link">
       <img src="/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">{{ config('app.name')}}</span>
     </a>
@@ -202,11 +202,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">   
+    <section class="content-header">
         @yield('header')
     </section>
     <!-- /.content-header -->
-    
+
     <!-- Main content -->
     <section class="content">
         @if (session()->has('flash'))
@@ -215,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         @yield('content')
     </section>
-    
+
     {{-- <div class="content">
       <div class="container-fluid">
         <div class="row">

@@ -14,7 +14,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
-    @stack('scripts')
+    @stack('styles')
+
 </head>
 <body>
 	<div class="preload"></div>
@@ -28,7 +29,7 @@
 					<li><a href="/" class="text-uppercase">Home</a></li>
 					<li><a href="about.html" class="text-uppercase">About</a></li>
 					<li><a href="archive.html" class="text-uppercase">Archive</a></li>
-					<li><a href="contact.html" class="text-uppercase">Contact</a></li>
+					<li><a href="{{ route('admin.admin') }}" class="text-uppercase">Admin</a></li>
 				</ul>
 			</nav>
             <figure class="logo-xs"><img src="/img/logo-p.png" alt=""></figure>
@@ -60,5 +61,9 @@
                 <li><a href="#" class="pn"></a></li>
             </ul>
         </div>
-    </footer>    
-</body>        
+    </footer>
+
+    @stack('scripts')
+
+</body>
+</html>

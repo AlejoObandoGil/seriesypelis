@@ -128,7 +128,7 @@ cite .img-cite, .cite .img-cite{
 	padding: 45px;
 	text-align: center;
 	color: #ffffff;
-	
+
 }
 .footer footer .logo{
 	opacity: 0.4;
@@ -213,7 +213,7 @@ a.btn-bar{
 	border: 0;
 	background: #f7f9fc;
 	resize: vertical;
-	padding: 25px 0 0 15px; 
+	padding: 25px 0 0 15px;
 }
 .page-contact .form-contact .send-message a{
 	display: block;
@@ -237,15 +237,15 @@ a.btn-bar{
 	display: block;
 	text-align: center;
 }
-      
+
       .custom-wrapper.open {
           height: 9em;
       }
-      
+
       .custom-menu-3 {
           text-align: right;
       }
-      
+
       .custom-toggle {
           width: 34px;
           height: 34px;
@@ -255,7 +255,7 @@ a.btn-bar{
           right: 20px;
           display: none;
       }
-      
+
       .custom-toggle .bar {
           background-color: #1abc9c;
           display: block;
@@ -265,7 +265,7 @@ a.btn-bar{
           position: absolute;
           top: 18px;
           right: 7px;
-          
+
       }
 	  .buttons-social-media-share {
 		margin-bottom: 20px;
@@ -275,12 +275,67 @@ a.btn-bar{
 		margin: 0;
 		padding: 0;
 	  }
-      
+
       .buttons-social-media-share .share-buttons li{
 		list-style-type: none;
 		float: left;
 		margin-right: 10px;
 	  }
 
+      .overlay{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          /* width: 10%; */
+          /* height: 50%; */
+          position: absolute;
+          color: white;
+          font-size: 70px;
+          background-color: rgba(0,0,0, .7);
+      }
+
+      .gallery-photos{
+          overflow: hidden;
+      }
+
+      .carousel-inner .item img{
+        width: 100%;
+      }
+
+      .img-center{
+        position: relative;
+        width: 600px;
+        height: 600px;
+      }
+
+      .img-p{
+          position: absolute;
+          width: 500px;
+          height: 550px;
+          top: 0px;
+          left: 185px;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          padding: 10px;
+      }
+
+      .img-center-2{
+        position: relative;
+        width: 800px;
+        height: 800px;
+      }
+
+      .img-p-2{
+        position: absolute;
+        width: 700px;
+        height: 750px;
+        top: 0px;
+        left: 90px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        padding: 10px;
+    }
 
 

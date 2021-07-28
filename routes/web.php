@@ -1,21 +1,23 @@
 <?php
 
-Route::get('/', 'PagesController@home');
-Route::get('blog/{post}', 'PostsController@show');
+Route::get('/', 'PagesController@home')->name('home');
+Route::get('blog/{post}', 'PostsController@show')->name('posts.show');
 
 Route::group([
     // 'prefix' => 'admin',
     'namespace' => 'Admin',
     'middleware' => 'auth'],
 
-function(){
-    Route::get('posts', 'PostController@index')->name('admin.posts.index');
-    Route::get('admin', 'AdminController@index')->name('admin.admin');
-    Route::get('create', 'PostController@create')->name('admin.posts.create');
-    Route::post('posts', 'PostController@store')->name('admin.posts.store');
-    Route::get('posts/{post}', 'PostController@edit')->name('admin.posts.edit');
-    Route::put('posts/{post}', 'PostController@update')->name('admin.posts.update');
+    function(){
+        Route::get('posts', 'PostController@index')->name('admin.posts.index');
+        Route::get('admin', 'AdminController@index')->name('admin.admin');
+        Route::get('create', 'PostController@create')->name('admin.posts.create');
+        Route::post('posts', 'PostController@store')->name('admin.posts.store');
+        Route::get('posts/{post}', 'PostController@edit')->name('admin.posts.edit');
+        Route::put('posts/{post}', 'PostController@update')->name('admin.posts.update');
 
+        Route::post('posts/{post}/photo', 'PhotoController@store')->name('admin.posts.photo.store');
+        Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
 });
 
 // Authentication Routes...
