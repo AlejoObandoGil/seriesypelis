@@ -41,6 +41,14 @@
 
                             {!! $errors->first('body', '<span class="help-block">:message</span>') !!}
                         </div>
+                        <div class="form-group {!! $errors->has('description') ? 'has-error' : ' ' !!}">
+                            <label for="">Descripción de la publicación</label>
+                            <textarea name="description"
+                                        class="form-control"
+                                        placeholder="Ingresa una descripción breve de la película o serie">{{ old('description', $post->description) }}</textarea>
+
+                            {!! $errors->first('description', '<span class="help-block">:message</span>') !!}
+                        </div>
                         <div class="form-group">
                             <label for="">Agregar Imagenes</label>
                             <div class="dropzone"></div>
@@ -55,14 +63,6 @@
                     </div>
                     <div class="form-group">
                         <div class="card-body">
-                            <div class="form-group {!! $errors->has('description') ? 'has-error' : ' ' !!}">
-                                <label for="">Descripción de la publicación</label>
-                                <textarea name="description"
-                                            class="form-control"
-                                            placeholder="Ingresa una descripción breve de la película o serie">{{ old('description', $post->description) }}</textarea>
-
-                                {!! $errors->first('description', '<span class="help-block">:message</span>') !!}
-                            </div>
                             <!-- Date -->
                             <div class="form-group">
                                 <label>Fecha de publicación:</label>
@@ -99,6 +99,15 @@
                                         <option {{ collect(old('tags', $post->tags->pluck('id')))->contains($tag->id) ? 'selected' : '' }} value="{{ $tag->id }}">{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group {!! $errors->has('iframe') ? 'has-error' : ' ' !!}">
+                                <label for="">link embebido trailer (iframe)</label>
+                                <textarea rows="4"
+                                        name="iframe"
+                                        class="form-control"
+                                        placeholder="Ingresa el contenido embebido con el link del trailer">{{  old('iframe', $post->iframe) }}</textarea>
+
+                                {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
                             </div>
                             <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>

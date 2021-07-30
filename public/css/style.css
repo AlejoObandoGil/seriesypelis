@@ -32,7 +32,23 @@ header nav li a:hover{
 }
 .post .content-post{
 	position: relative;
-	padding: 65px 100px;
+	padding: 65px 50px;
+    /* width: 700px;
+    height: 750px;
+    top: 0px; */
+    /* left: 50px; */
+    /* right: 0;
+    bottom: 0; */
+}
+.post .content-post-2{
+	position: relative;
+	padding: 65px 50px;
+    /* width: 700px;
+    height: 750px;
+    top: 0px; */
+    left: 50px;
+    /* right: 0;
+    bottom: 0; */
 }
 .post .category{
 	background: #1abc9c;
@@ -43,6 +59,12 @@ header nav li a:hover{
     top: 30px;
     text-transform: capitalize;
 }
+
+.post .category a{
+    color: inherit;
+    font-size: inherit;
+}
+
 .post figure{
 	margin:0;
 }
@@ -64,6 +86,11 @@ header nav li a:hover{
 }
 .post .tag{
 	margin: 0 5px;
+}
+.post .tag a{
+	margin: 0 5px;
+    color: gray;
+    font-size: inherit;
 }
 .post footer{
 	margin-top: 45px;
@@ -106,6 +133,8 @@ cite .img-cite, .cite .img-cite{
 .image-w-text span.cite-2, span.cite-2{
 	color: #999999;
 	padding-left: 15px;
+    top: 150px;
+    bottom: 150px;
 	border-left: 4px solid #eeeeee;
 	display: block;
 	line-height: 1.7;

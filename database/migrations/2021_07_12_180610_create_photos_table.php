@@ -13,6 +13,7 @@ class CreatePhotosTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('photos');
         Schema::create('photos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('post_id');
@@ -28,6 +29,6 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('photos');
     }
 }

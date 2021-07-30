@@ -30,7 +30,7 @@
 	.tags{
 		margin-top: 15px;
 	}
-	
+
 	.video iframe{
 		height: 247px;
 	}
@@ -61,17 +61,17 @@
 	}
 
     nav a.btn-bar {
-        
+
         background: url('../img/nav-icon.png') no-repeat !important;
-        
+
     }
 
     .custom-menu-3 {
               text-align: left;
           }
-      
+
           .custom-toggle {
               display: block;
           }
-	
+
 }

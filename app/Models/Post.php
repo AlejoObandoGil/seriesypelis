@@ -38,4 +38,10 @@ class Post extends Model
         ->where('published_at', '<=', Carbon::now())
         ->latest('published_at');
     }
+
+    public function setTitleAttribute($title)
+    {
+        $this->attributes['title'] = $title;
+        $this->attributes['url'] = str_slug($title);
+    }
 }

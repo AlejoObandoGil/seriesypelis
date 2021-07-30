@@ -29,11 +29,8 @@ class PostController extends Controller
     {
         // validamos
         $this->validate($request, ['title' => 'required']);
-        // creamos
-        $post = Post::create([
-            'title' => $request->get('title'),
-            'url' => str_slug($request->get('title')),
-        ]);
+        // creamos - devuelve array solo la con llave title y su valor ingresado
+        $post = Post::create($request->only('title'));
         // retornamos
         return redirect()->route('admin.posts.edit', $post);
     }
@@ -57,10 +54,10 @@ class PostController extends Controller
         ]);
 
         $post->title = $request->title;
-        $post->url = str_slug($request->title);
         $post->description = $request->description;
         $post->body = $request->body;
         $post->published_at = Carbon::parse($request->published_at);
+        $post->iframe = $request->iframe;
         $post->category_id = $request->get('category');
         $post->save();
 

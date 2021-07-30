@@ -21,7 +21,9 @@
 	<div class="preload"></div>
 	<header class="space-inter">
 		<div class="container container-flex space-between">
-            <figure class="logo"><img src="/img/logo.png" alt=""></figure>
+            <a href="{{ route('home') }}"">
+                <figure class="logo"><img  src="/img/logo.png" alt=""></figure>
+            </a>
             <h1>{{ config('app.name') }}</h1>
 			<nav class="custom-wrapper" id="menu">
 				<div class="pure-menu"></div>
