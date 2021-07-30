@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public function getRouteKeyName(){
+    protected $guarded = [];
 
+    public function getRouteKeyName()
+    {
         return 'url';
     }
 

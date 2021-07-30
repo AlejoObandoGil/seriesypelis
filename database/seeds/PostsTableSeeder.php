@@ -97,14 +97,6 @@ class PostsTableSeeder extends Seeder
         $category->save();
 
         $tags = new Tag;
-        $tags->name = "Gansters";
-        $tags->save();
-
-        $tags = new Tag;
-        $tags->name = "Drama";
-        $tags->save();
-
-        $tags = new Tag;
         $tags->name = "Comedia";
         $tags->save();
 

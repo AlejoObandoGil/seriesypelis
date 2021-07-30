@@ -28,7 +28,8 @@
                             <input name="title"
                                     class="form-control"
                                     value="{{  old('title', $post->title) }}"
-                                    placeholder="Ingresa el título de la película o serie">
+                                    placeholder="Ingresa el título de la película o serie"
+                                    required>
 
                             {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                         </div>
@@ -37,7 +38,9 @@
                             <textarea rows="10"
                                     name="body"
                                     class="form-control"
-                                    placeholder="Ingresa el contenido completo de la película o serie">{{  old('body', $post->body) }}</textarea>
+                                    placeholder="Ingresa el contenido completo de la película o serie"
+                                    required>{{  old('body', $post->body) }}
+                            </textarea>
 
                             {!! $errors->first('body', '<span class="help-block">:message</span>') !!}
                         </div>
@@ -45,7 +48,9 @@
                             <label for="">Descripción de la publicación</label>
                             <textarea name="description"
                                         class="form-control"
-                                        placeholder="Ingresa una descripción breve de la película o serie">{{ old('description', $post->description) }}</textarea>
+                                        placeholder="Ingresa una descripción breve de la película o serie"
+                                        required >{{ old('description', $post->description) }}
+                            </textarea>
 
                             {!! $errors->first('description', '<span class="help-block">:message</span>') !!}
                         </div>
@@ -77,18 +82,18 @@
                                             data-target="#reservationdate"/>
                                 </div>
                             </div>
-                            <div class="form-group {!! $errors->has('category') ? 'has-error' : '' !!}">
+                            <div class="form-group {!! $errors->has('category_id') ? 'has-error' : '' !!}">
                                 <label for="">Géneros</label>
-                                <select name="category" class="form-control">
-                                    <option value="">Seleccione un género</option>
+                                <select name="category_id" class="form-control select2">
+                                    {{-- <option value="">Seleccione un género</option> --}}
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
-                                            {{ old('category', $post->category_id) == $category->id ? 'selected' : ''}}
+                                            {{ old('category_id', $post->category_id) == $category->id ? 'selected' : ''}}
                                         >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
 
-                                {!! $errors->first('category', '<span class="help-block">:message</span>') !!}
+                                {!! $errors->first('category_id', '<span class="help-block">:message</span>') !!}
                             </div>
                             <div class="form-group">
                                 <label for="">Etiquetas</label>
@@ -148,6 +153,8 @@
 @stop
 
 @push('styles')
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <!-- daterange picker -->
 <link rel="stylesheet" href="/adminlte/plugins/daterangepicker/daterangepicker.css">
 <!-- Tempusdominus Bootstrap 4 -->
@@ -160,7 +167,8 @@
 
 @push('scripts')
 <!-- Select2 -->
-<script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+{{-- <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="/adminlte/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
@@ -213,6 +221,15 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
     })
+
+    $('.select2').select2({
+        tags: true,
+        width: 'resolve',
+        placeholder: 'Selecciona una opción...',
+        allowClear: true,
+        theme: "classic",
+        // multiple: true,
+    });
 
     var myDropzone = new Dropzone('.dropzone', {
         url: '/posts/{{ $post->url }}/photo',

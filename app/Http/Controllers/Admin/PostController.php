@@ -7,6 +7,7 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller
@@ -42,26 +43,12 @@ class PostController extends Controller
         return view('admin.posts.edit', compact('categories', 'tags', 'post'));
     }
 
-    public function update(Post $post, Request $request)
+    public function update(Post $post, StorePostRequest $request)
     {
-        // dd($request->get('tags'));
+        // $post->update($request->except('tags'));
+        $post->update($request->all());
 
-        $this->validate($request, [
-            'title'=>'required',
-            'description'=>'required',
-            'body'=>'required',
-            'category'=>'required'
-        ]);
-
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->body = $request->body;
-        $post->published_at = Carbon::parse($request->published_at);
-        $post->iframe = $request->iframe;
-        $post->category_id = $request->get('category');
-        $post->save();
-
-        $post->tags()->sync($request->get('tags'));
+        $post->syncTags($request->get('tags'));
 
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'Nueva Publicación actualizada!');
     }
