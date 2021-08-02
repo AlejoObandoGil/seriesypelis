@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-    <form method="POST" action="{{ route('admin.posts.store')}}">
+    <form method="POST" action="{{ route('admin.posts.store', '#create') }}">
         @csrf
 
     <div class="modal-dialog" role="document">
@@ -14,11 +14,13 @@
             </div>
             <div class="modal-body">
                 <div class="form-group {!! $errors->has('title') ? 'has-error' : ' ' !!}">
-                    {{-- <label for="">Título de la publicación</label> --}}
-                    <input name="title"
+                    <label for="">Título de la publicación</label>
+                    <input id="post-title"
+                            name="title"
                             class="form-control"
                             value="{{  old('title') }}"
-                            placeholder="Ingresa el título de la película o serie" required>
+                            placeholder="Ingresa el título de la película o serie"
+                            autofocus required>
 
                     {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                 </div>
@@ -31,3 +33,5 @@
     </div>
     </form>
 </div>
+
+

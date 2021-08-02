@@ -5,7 +5,7 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Storage;
 
 class PostsTableSeeder extends Seeder
 {
@@ -16,6 +16,8 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        // eliminar carpeta posts de storage
+        // Storage::disk('public')->deleteDirectory('posts');
         // limpar la bd antes de llenar
         Post::truncate();
         Category::truncate();

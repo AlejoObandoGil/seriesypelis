@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Storage;
 class Post extends Model
 {
     protected $fillable = [
@@ -12,6 +12,22 @@ class Post extends Model
     ];
 
     protected $dates = ['published_at'];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($post)
+        {
+            $post->tags()->detach();
+            foreach($post->photos as $photo)
+            {
+                $photo->delete();
+                $photoPath = str_replace('storage', 'public', $photo->url);
+                Storage::delete($photoPath);
+            }
+        });
+    }
 
     public function getRouteKeyName(){
 
@@ -42,11 +58,42 @@ class Post extends Model
         ->latest('published_at');
     }
 
-    public function setTitleAttribute($title)
+    // metodo para devolver el post recien creado con url unica
+    public static function create(array $attributes = [])
     {
-        $this->attributes['title'] = $title;
-        $this->attributes['url'] = str_slug($title);
+        $post = static::query()->create($attributes);
+
+        $post->generateUrl();
+
+        return $post;
     }
+
+    public function generateUrl()
+    {
+        $url = str_slug($this->title);
+
+        if ($this->where('url', $url)->exists())
+        {
+            $url =  "{$url}-{$this->id}";
+        };
+        $this->url = $url;
+        $this->save();
+    }
+
+    // public function setTitleAttribute($title)
+    // {
+    //     $this->attributes['title'] = $title;
+
+    //     $url = str_slug($title);
+
+    //     $duplicateUrlCount = Post::where('url', 'LIKE', "{$url}%")->count();
+
+    //     if($duplicateUrlCount)
+    //     {
+    //         $url .= "-" . uniqid();
+    //     }
+    //     $this->attributes['url'] = ($url);
+    // }
 
     public function setPublishedAtAttribute($published_at)
     {

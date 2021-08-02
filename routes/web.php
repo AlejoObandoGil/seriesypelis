@@ -1,6 +1,11 @@
 <?php
 
 Route::get('/', 'PagesController@home')->name('home');
+Route::get('about', 'PagesController@about')->name('home');
+Route::get('archive', 'PagesController@archive')->name('home');
+Route::get('contact', 'PagesController@contact')->name('home');
+
+
 Route::get('blog/{post}', 'PostsController@show')->name('posts.show');
 Route::get('category/{category}', 'CategoryController@show')->name('category.show');
 Route::get('tag/{tag}', 'TagController@show')->name('tag.show');
@@ -17,6 +22,7 @@ Route::group([
         Route::post('posts', 'PostController@store')->name('admin.posts.store');
         Route::get('posts/{post}', 'PostController@edit')->name('admin.posts.edit');
         Route::put('posts/{post}', 'PostController@update')->name('admin.posts.update');
+        Route::delete('posts/{post}', 'PostController@destroy')->name('admin.posts.destroy');
 
         Route::post('posts/{post}/photo', 'PhotoController@store')->name('admin.posts.photo.store');
         Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');

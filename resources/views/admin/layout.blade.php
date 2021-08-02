@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
+Esta es la plantilla principal del modal CRUD de posts
 -->
 <html lang="en">
 <head>
@@ -316,6 +315,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 @stack('scripts')
 
 @include('admin.posts.create')
+
+@unless(request()->is('posts/*'))
+
+<script>
+    if( window.location.hash === '#create')
+    {
+        $('#exampleModal').modal('show');
+    }
+    $('#exampleModal').on('hide.bs.modal', function(){
+        window.location.hash = '#';
+    });
+    $('#exampleModal').on('shown.bs.modal', function(){
+        $('#post-title').focus();
+        window.location.hash = '#create';
+    });
+</script>
+
+@endunless
 
 </body>
 </html>

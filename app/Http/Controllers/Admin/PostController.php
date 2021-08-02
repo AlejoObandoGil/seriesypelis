@@ -18,18 +18,11 @@ class PostController extends Controller
 
         return view('admin.posts.index', compact('posts'));
     }
-    // public function create()
-    // {
-    //     $categories = Category::all();
-    //     $tags = Tag::all();
-
-    //     return view('admin.posts.create', compact('categories', 'tags'));
-    // }
 
     public function store(Request $request)
     {
         // validamos
-        $this->validate($request, ['title' => 'required']);
+        $this->validate($request, ['title' => 'required|min:1']);
         // creamos - devuelve array solo la con llave title y su valor ingresado
         $post = Post::create($request->only('title'));
         // retornamos
@@ -52,4 +45,20 @@ class PostController extends Controller
 
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'Nueva Publicación actualizada!');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('flash', 'Publicación Eliminada!');
+
+    }
 }
+
+    // public function create()
+    // {
+    //     $categories = Category::all();
+    //     $tags = Tag::all();
+
+    //     return view('admin.posts.create', compact('categories', 'tags'));
+    // }
