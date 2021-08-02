@@ -145,6 +145,42 @@ Esta es la plantilla principal del modal CRUD de posts
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
+        <!-- Authentication Links -->
+        @guest
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+            @endif
+        @else
+            {{-- @role('admin') --}}
+                <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.admin') }}">ADMIN</a>
+                    </li>
+                </li>
+            {{-- @endrole --}}
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ auth()->user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        Cerrar Sesión
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -316,7 +352,7 @@ Esta es la plantilla principal del modal CRUD de posts
 
 @include('admin.posts.create')
 
-@unless(request()->is('posts/*'))
+@unless(request()->is('admin/posts/*'))
 
 <script>
     if( window.location.hash === '#create')

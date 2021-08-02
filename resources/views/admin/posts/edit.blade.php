@@ -110,7 +110,9 @@
                                 <textarea rows="4"
                                         name="iframe"
                                         class="form-control"
-                                        placeholder="Ingresa el contenido embebido con el link del trailer">{{  old('iframe', $post->iframe) }}</textarea>
+                                        placeholder="Ingresa el contenido embebido con el link del trailer">
+                                        {{  old('iframe', $post->iframe) }}
+                                </textarea>
 
                                 {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
                             </div>
@@ -196,22 +198,14 @@
         $('#reservationdate').datetimepicker({
             format: 'L'
         });
-
         //Date and time picker
         $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
-
         //Timepicker
         $('#timepicker').datetimepicker({
             format: 'LT'
         })
-
         //Bootstrap Duallistbox
         $('.duallistbox').bootstrapDualListbox()
-
-        //Colorpicker
-        // $('.my-colorpicker1').colorpicker()
-        // //color picker with addon
-        // $('.my-colorpicker2').colorpicker()
 
         $('.my-colorpicker2').on('colorpickerChange', function(event) {
             $('.my-colorpicker2 .fa-square').css('color', event.color.toString());

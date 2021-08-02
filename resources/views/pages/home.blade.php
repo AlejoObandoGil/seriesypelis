@@ -1,7 +1,7 @@
 @extends('pages.layout')
 
 @section('content')
-
+{{-- ---------------------------------------HEADER------------------------------- --}}
 <section class="posts container">
     @if (isset($title))
         <h1>{{ $title }}</h1>
@@ -18,7 +18,7 @@
 			<div class="content-post">
 				<header class="container-flex space-between">
 					<div class="date">
-						<span class="c-gray-1">{{ $post->published_at->format('d M Y') }}</span>
+						<span class="c-gris">Estreno: {{ $post->published_at->format('d M Y') }}</span>
 					</div>
 					<div class="post-category">
 						<span class="category text-capitalize">
@@ -29,8 +29,12 @@
 					</div>
 				</header>
 				<h1>{{ $post->title }}</h1>
+
+{{-- ---------------------------------------CONTENT------------------------------- --}}
 				<div class="divider"></div>
 				<p>{{ $post->description }}</p>
+
+{{-- ---------------------------------------FOOTER------------------------------- --}}
 				<footer class="container-flex space-between">
 					<div class="read-more">
 						<a href="/inicio/{{ $post->url }}" class="text-uppercase c-green">Leer más</a>

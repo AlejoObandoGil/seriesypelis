@@ -4,21 +4,21 @@
 @section('meta-description', $post->description)
 
 @section('content')
-
+{{-- ---------------------------------------HEADER------------------------------- --}}
 <article class="post container">
     @if ($post->photos->count() === 1)
     <div class="img-center-2">
         <img src="{{ $post->photos->first()->url }}" class="img-p-2">
     </div>
-
     @elseif($post->photos->count() > 1)
         @include('posts.carousel')
     @endif
     <div class="content-post-2">
         <header class="container-flex space-between">
             <div class="date">
-                <span class="c-gris">{{ $post->published_at->format('d M Y') }}</span>
+                <span class="c-gris">Estreno: {{ optional($post->published_at)->format('d M Y') }}</span>
             </div>
+            @if ($post->category)
             <div class="post-category">
                 <span class="category text-capitalize">
                     <a href="{{ route('category.show', $post->category) }}">
@@ -26,8 +26,11 @@
                     </a>
                 </span>
             </div>
+            @endif
         </header>
         <h1>{{ $post->title }}</h1>
+
+{{-- ---------------------------------------CONTENT------------------------------- --}}
         <div class="divider">
             <div class="image-w-text">
                 <figure class="block-left"><img src="img/img-post-2.png" alt=""></figure>
@@ -41,19 +44,30 @@
                 {!! $post->iframe !!}
             </div>
         @endif
+
+{{-- ---------------------------------------FOOTER------------------------------- --}}
         <footer class="container-flex space-between">
-            @include('partials.social-links')
-            <div class="tags container-flex">
+            <div class="tags container-flex" style="padding-top: 20px">
+                <span class="c-gris">Publicado por: {{ $post->owner->name }}
+                </span>
+            </div>
+            <div class="tags container-flex" style="padding-top: 20px">
                 @foreach ($post->tags as $tag)
-                    <span class="tag c-gray-1 text-capitalize"> <a href="{{ route('tag.show', $tag) }}">#{{ $tag->name }}</a></span>
+                    <span class="tag c-gray-1 text-capitalize">
+                        <a href="{{ route('tag.show', $tag) }}">#{{ $tag->name }}</a>
+                    </span>
                 @endforeach
             </div>
         </footer>
-        <div class="comments">
-            <div class="divider"></div>
-            <div id="disqus_thread"></div>
-            @include('partials.disqus-script')
-        </div><!-- .comments -->
+
+        <div class="comments"><!-- .comments -->
+            <div class="divider" style="padding-top: 50px">
+                @include('partials.social-links')
+            </div>
+            <div id="disqus_thread">
+                @include('partials.disqus-script')
+            </div>
+        </div>
     </div>
 </article>
 

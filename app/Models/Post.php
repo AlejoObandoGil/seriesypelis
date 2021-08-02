@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'description', 'body', 'published_at', 'iframe', 'category_id',
+        'title', 'description', 'body', 'published_at', 'iframe', 'category_id', 'user_id',
     ];
 
     protected $dates = ['published_at'];
@@ -50,6 +51,12 @@ class Post extends Model
         return $this->hasMany(Photo::class);
     }
 
+    // Un post puede tener un solo administrador
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     // metodo para validar post activos o correctos
     public function scopePublished($query)
     {
@@ -58,9 +65,15 @@ class Post extends Model
         ->latest('published_at');
     }
 
+    public function isPublished()
+    {
+        return ! is_null($this->published_at) && ($this->published_at < today() || $this->published_at = today());
+    }
+
     // metodo para devolver el post recien creado con url unica
     public static function create(array $attributes = [])
     {
+        $attributes['user_id'] = auth()->id();
         $post = static::query()->create($attributes);
 
         $post->generateUrl();
@@ -79,21 +92,6 @@ class Post extends Model
         $this->url = $url;
         $this->save();
     }
-
-    // public function setTitleAttribute($title)
-    // {
-    //     $this->attributes['title'] = $title;
-
-    //     $url = str_slug($title);
-
-    //     $duplicateUrlCount = Post::where('url', 'LIKE', "{$url}%")->count();
-
-    //     if($duplicateUrlCount)
-    //     {
-    //         $url .= "-" . uniqid();
-    //     }
-    //     $this->attributes['url'] = ($url);
-    // }
 
     public function setPublishedAtAttribute($published_at)
     {
@@ -120,3 +118,19 @@ class Post extends Model
         return $this->tags()->sync($tagIds);
     }
 }
+
+
+    // public function setTitleAttribute($title)
+    // {
+    //     $this->attributes['title'] = $title;
+
+    //     $url = str_slug($title);
+
+    //     $duplicateUrlCount = Post::where('url', 'LIKE', "{$url}%")->count();
+
+    //     if($duplicateUrlCount)
+    //     {
+    //         $url .= "-" . uniqid();
+    //     }
+    //     $this->attributes['url'] = ($url);
+    // }
