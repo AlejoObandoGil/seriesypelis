@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('pages.layout')
+
 @section('content')
 
 <section class="posts container">
@@ -32,7 +33,7 @@
 				<p>{{ $post->description }}</p>
 				<footer class="container-flex space-between">
 					<div class="read-more">
-						<a href="/blog/{{ $post->url }}" class="text-uppercase c-green">Leer más</a>
+						<a href="/inicio/{{ $post->url }}" class="text-uppercase c-green">Leer más</a>
 					</div>
 					<div class="tags container-flex">
 						@foreach ($post->tags as $tag)
@@ -50,7 +51,9 @@
 @stop
 
 @push('styles')
+
     <link rel="stylesheet" type="text/css" href="/css/twitter-bootstrap.css">
+
 @endpush
 
 @push('scripts')

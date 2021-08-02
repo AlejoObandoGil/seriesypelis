@@ -9,7 +9,7 @@ class TagController extends Controller
 {
     public function show(Tag $tag)
     {
-        return view('welcome', [
+        return view('pages.home', [
             'title' => "Películas & Series HashTag #$tag->name",
             'posts' => $tag->posts()->paginate()
             ]);

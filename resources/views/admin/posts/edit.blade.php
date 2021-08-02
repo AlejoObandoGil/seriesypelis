@@ -232,7 +232,7 @@
     });
 
     var myDropzone = new Dropzone('.dropzone', {
-        url: '/posts/{{ $post->url }}/photo',
+        url: '/admin/posts/{{ $post->url }}/photo',
         headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
         },

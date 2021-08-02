@@ -1,12 +1,11 @@
-@extends('layout')
+@extends('pages.layout')
 
 @section('meta-title', $post->title)
 @section('meta-description', $post->description)
 
-
 @section('content')
 
-<article class="post image-w-text container">
+<article class="post container">
     @if ($post->photos->count() === 1)
     <div class="img-center-2">
         <img src="{{ $post->photos->first()->url }}" class="img-p-2">
@@ -21,7 +20,11 @@
                 <span class="c-gris">{{ $post->published_at->format('d M Y') }}</span>
             </div>
             <div class="post-category">
-                <span class="category">{{ $post->category->name }}</span>
+                <span class="category text-capitalize">
+                    <a href="{{ route('category.show', $post->category) }}">
+                        {{ $post->category->name }}
+                    </a>
+                </span>
             </div>
         </header>
         <h1>{{ $post->title }}</h1>
@@ -42,7 +45,7 @@
             @include('partials.social-links')
             <div class="tags container-flex">
                 @foreach ($post->tags as $tag)
-                    <span class="tag c-gray-1 text-capitalize">#{{ $tag->name }}</span>
+                    <span class="tag c-gray-1 text-capitalize"> <a href="{{ route('tag.show', $tag) }}">#{{ $tag->name }}</a></span>
                 @endforeach
             </div>
         </footer>
@@ -57,6 +60,7 @@
 @endsection
 
 @push('styles')
+
     <link rel="stylesheet" type="text/css" href="/css/twitter-bootstrap.css">
 
 @endpush
@@ -64,7 +68,9 @@
 @push('scripts')
 
     <script id="dsq-count-scr" src="//zendero.disqus.com/count.js" async></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
     <script src="/js/twitter-bootstrap.js"></script>
 
 @endpush

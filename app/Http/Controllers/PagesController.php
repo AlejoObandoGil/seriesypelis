@@ -13,6 +13,16 @@ class PagesController extends Controller
          // $posts = App\Models\Post::all();
         $posts = Post::published()->paginate(1);
 
-        return view('welcome', compact('posts')); //['posts' => $posts]
+        return view('pages.home', compact('posts')); //['posts' => $posts]
+    }
+
+    public function about()
+    {
+        return view('pages.about');
+    }
+
+    public function archive()
+    {
+        return view('pages.archive');
     }
 }

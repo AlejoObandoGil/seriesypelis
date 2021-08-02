@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         // return $category->load('posts');
-        return view('welcome', [
+        return view('pages.home', [
             'title' => "Películas & Series Género $category->name",
             'posts' => $category->posts()->paginate()
             ]);

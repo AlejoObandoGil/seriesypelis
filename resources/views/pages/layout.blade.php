@@ -25,15 +25,9 @@
                 <figure class="logo"><img  src="/img/logo.png" alt=""></figure>
             </a>
             <h1>{{ config('app.name') }}</h1>
-			<nav class="custom-wrapper" id="menu">
-				<div class="pure-menu"></div>
-				<ul class="container-flex list-unstyled">
-					<li><a href="/" class="text-uppercase">Home</a></li>
-					<li><a href="about.html" class="text-uppercase">About</a></li>
-					<li><a href="archive.html" class="text-uppercase">Archive</a></li>
-					<li><a href="{{ route('admin.admin') }}" class="text-uppercase">Admin</a></li>
-				</ul>
-			</nav>
+
+            @include('partials.nav')
+
             <figure class="logo-xs"><img src="/img/logo-p.png" alt=""></figure>
 		</div>
 	</header>

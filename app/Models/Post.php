@@ -97,14 +97,16 @@ class Post extends Model
 
     public function setPublishedAtAttribute($published_at)
     {
-        $this->attributes['published_at'] = $published_at ? Carbon::parse($published_at) : null;
+        $this->attributes['published_at'] = $published_at
+                                            ? Carbon::parse($published_at)
+                                            : null;
     }
 
     public function setCategoryIdAttribute($category)
     {
         $this->attributes['category_id'] = Category::find($category)
-                                        ? $category
-                                        : Category::create(['name' => $category])->id;
+                                            ? $category
+                                            : Category::create(['name' => $category])->id;
     }
 
     public function syncTags($tags)

@@ -1,23 +1,23 @@
 <?php
 
 Route::get('/', 'PagesController@home')->name('home');
-Route::get('about', 'PagesController@about')->name('home');
-Route::get('archive', 'PagesController@archive')->name('home');
-Route::get('contact', 'PagesController@contact')->name('home');
+Route::get('nosotros', 'PagesController@about')->name('pages.about');
+Route::get('archivo', 'PagesController@archive')->name('pages.archive');
+Route::get('contact', 'PagesController@contact')->name('pages.contact');
 
 
-Route::get('blog/{post}', 'PostsController@show')->name('posts.show');
-Route::get('category/{category}', 'CategoryController@show')->name('category.show');
-Route::get('tag/{tag}', 'TagController@show')->name('tag.show');
+Route::get('inicio/{post}', 'PostsController@show')->name('posts.show');
+Route::get('categoria/{category}', 'CategoryController@show')->name('category.show');
+Route::get('hashtag/{tag}', 'TagController@show')->name('tag.show');
 
 Route::group([
-    // 'prefix' => 'admin',
+    'prefix' => 'admin',
     'namespace' => 'Admin',
     'middleware' => 'auth'],
 
     function(){
+        Route::get('/', 'AdminController@index')->name('admin.admin');
         Route::get('posts', 'PostController@index')->name('admin.posts.index');
-        Route::get('admin', 'AdminController@index')->name('admin.admin');
         Route::get('create', 'PostController@create')->name('admin.posts.create');
         Route::post('posts', 'PostController@store')->name('admin.posts.store');
         Route::get('posts/{post}', 'PostController@edit')->name('admin.posts.edit');
