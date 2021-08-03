@@ -14,9 +14,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        // $posts = Post::where('user_id', auth()->id())->get();
-        // $posts = auth()->user()->posts;
+        // metodo para determinar la auth del usuario = admin|escritor
+        $posts = Post::allowed()->get();
 
         return view('admin.posts.index', compact('posts'));
     }

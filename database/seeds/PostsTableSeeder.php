@@ -18,7 +18,7 @@ class PostsTableSeeder extends Seeder
     {
         // eliminar carpeta posts de storage
         // Storage::disk('public')->deleteDirectory('posts');
-        // limpar la bd antes de llenar
+        // limpiar la bd antes de llenar
         Category::truncate();
         Tag::truncate();
         Post::truncate();

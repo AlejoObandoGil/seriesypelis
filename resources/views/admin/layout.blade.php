@@ -159,7 +159,7 @@ Esta es la plantilla principal del modal CRUD de posts
             {{-- @role('admin') --}}
                 <li class="nav-item dropdown">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.admin') }}">ADMIN</a>
+                        <a class="nav-link" href="{{ route('admin.admin') }}">{{ auth()->user()->roles->first()->name }}</a>
                     </li>
                 </li>
             {{-- @endrole --}}
@@ -167,14 +167,12 @@ Esta es la plantilla principal del modal CRUD de posts
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ auth()->user()->name }} <span class="caret"></span>
                 </a>
-
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                         Cerrar Sesión
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
