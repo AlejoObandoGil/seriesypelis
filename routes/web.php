@@ -15,14 +15,12 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => 'auth'],
 
-    function(){
+    function()
+    {
         Route::get('/', 'AdminController@index')->name('admin.admin');
-        Route::get('posts', 'PostController@index')->name('admin.posts.index');
-        Route::get('create', 'PostController@create')->name('admin.posts.create');
-        Route::post('posts', 'PostController@store')->name('admin.posts.store');
-        Route::get('posts/{post}', 'PostController@edit')->name('admin.posts.edit');
-        Route::put('posts/{post}', 'PostController@update')->name('admin.posts.update');
-        Route::delete('posts/{post}', 'PostController@destroy')->name('admin.posts.destroy');
+
+        Route::resource('posts', 'PostController', ['except' => 'show', 'as' => 'admin']);
+        Route::resource('users', 'UserController', ['as' => 'admin']);
 
         Route::post('posts/{post}/photo', 'PhotoController@store')->name('admin.posts.photo.store');
         Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
