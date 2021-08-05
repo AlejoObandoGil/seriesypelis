@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Events\UserWasCreated;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -62,6 +63,7 @@ class UserController extends Controller
             $user->givePermissionTo($request->permissions);
         }
 
+        UserWasCreated::dispatch($user, $data['password']);
 
         return redirect()->route('admin.users.index')->withFlash('Usuario Registrado!');
     }
