@@ -19,12 +19,23 @@ class UsersTableSeeder extends Seeder
         User::truncate();
 
         $adminRole = Role::create(['name' => 'Admin']);
-        $writerRole = Role::create(['name' => 'Writer']);
+        $writerRole = Role::create(['name' => 'Editor']);
+        $modRole = Role::create(['name' => 'Moderador']);
+        $usuarioRole = Role::create(['name' => 'Usuario']);
 
         $viewPostsPermission = Permission::create(['name' => 'View posts']);
         $createPostsPermission = Permission::create(['name' => 'Create posts']);
         $updatePostsPermission = Permission::create(['name' => 'Update posts']);
         $deletePostsPermission = Permission::create(['name' => 'Delete posts']);
+
+        $adminRole->givePermissionTo($viewPostsPermission);
+        $adminRole->givePermissionTo($createPostsPermission);
+        $adminRole->givePermissionTo($updatePostsPermission);
+        $adminRole->givePermissionTo($deletePostsPermission);
+
+        $writerRole->givePermissionTo($viewPostsPermission);
+        $writerRole->givePermissionTo($createPostsPermission);
+        $writerRole->givePermissionTo($updatePostsPermission);
 
         $admin = new User;
         $admin->name = 'JA';

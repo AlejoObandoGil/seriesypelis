@@ -22,6 +22,10 @@ Route::group([
         Route::resource('posts', 'PostController', ['except' => 'show', 'as' => 'admin']);
         Route::resource('users', 'UserController', ['as' => 'admin']);
 
+        Route::put('users/{user}/roles', 'UserRolController@update')->name('admin.users.roles.update');
+        Route::put('users/{user}/permissions', 'UserPermissionController@update')->name('admin.users.permissions.update');
+
+
         Route::post('posts/{post}/photo', 'PhotoController@store')->name('admin.posts.photo.store');
         Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
 });

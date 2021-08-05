@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateUserRequest;
 
-class UserController extends Controller
+class UserRolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // metodo para determinar la auth del usuario = admin|escritor
-        $users = User::all();
-
-        return view('admin.users.index', compact('users'));
+        //
     }
 
     /**
@@ -51,9 +45,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return view('admin.users.show', compact('user'));
+        //
     }
 
     /**
@@ -62,12 +56,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        $roles = Role::with('permissions')->get();
-        $permissions = Permission::pluck('name', 'id');
-
-        return view('admin.users.edit', compact('user', 'roles', 'permissions'));
+        //
     }
 
     /**
@@ -77,11 +68,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
-        $user->update($request->validated());
+        // quitamos todos los roles y aplicamos los nuevos del request - recibe el nombre
+        if(isset($request->roles)){
+            $user->roles()->detach();
+            if($request->filled('roles'))
+            {
+                $user->assignRole($request->roles);
+            }
+            return back()->withFlash('Roles actualizados!');
+        }
 
-        return back()->withFlash('Usuario actualizado!');
+        return back()->withFlash('Debes escoger por lo menos un rol!');
     }
 
     /**

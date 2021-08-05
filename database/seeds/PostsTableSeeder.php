@@ -117,7 +117,7 @@ class PostsTableSeeder extends Seeder
         // llamado a los valores de la BD
         $post ->title = "The Godfather";
         $post ->url = str_slug("The Godfather");
-        $post ->description = "Pelicula de drama y gansters";
+        $post ->description = "Película de drama y gansters";
         $post ->body = "El padrino (título original en inglés: The Godfather1​) es una película estadounidense de 1972 dirigida por Francis Ford Coppola. La película fue producida por Albert S. Ruddy, de la compañía Paramount Pictures. Está basada en la novela homónima (que a su vez está basada en la familia real de los Mortillaro de Sicilia, Italia), de Mario Puzo, quien adaptó el guion junto a Coppola y Robert Towne, este último sin ser acreditado.
 
         ​Protagonizada por Marlon Brando y Al Pacino como los líderes de una poderosa familia criminal ficticia de Nueva York, la historia, ambientada desde 1945 a 1955, cuenta las crónicas de la Familia Corleone liderada por Vito Corleone (Brando), enfocándose en el personaje de Michael Corleone (Pacino), y su transformación de un reacio joven ajeno a los asuntos familiares a un implacable jefe de la mafia ítalo-estadounidense";
@@ -158,7 +158,7 @@ class PostsTableSeeder extends Seeder
         $post ->title = "El lobo de Wall street";
         $post ->url = str_slug("El lobo de Wall street");
 
-        $post ->description = "Pelicula de drama y comedia negra";
+        $post ->description = "Película de drama y comedia negra";
         $post ->body = "El lobo de Wall Street —cuyo título original en inglés es The Wolf of Wall Street— es una película de 2013 dirigida por Martin Scorsese, basada en las memorias del mismo nombre de Jordan Belfort. Escrita por Terence Winter y protagonizada por Leonardo DiCaprio como Belfort, junto a Jonah Hill, Margot Robbie, Jean Dujardin, Rob Reiner, Kyle Chandler y Matthew McConaughey, se trata de la quinta colaboración entre Scorsese y DiCaprio.3​
 
         La película cuenta la historia de un agente de bolsa de Nueva York, interpretado por DiCaprio, que se niega a cooperar en un caso de fraude de títulos que involucra la corrupción en Wall Street, el banco comercial e infiltración de la mafia.";
