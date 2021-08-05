@@ -16,11 +16,9 @@
 
 <div class="card card-dark">
     <div class="card-header">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-plus"></i>Nueva Publicación</button>
-            <br>
-            <br>
         <h3 class="card-title">Lista de Películas y Series</h3>
+        <button class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-plus"></i>Nueva Publicación</button>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

@@ -16,11 +16,10 @@
 
 <div class="card card-dark">
     <div class="card-header">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-plus"></i>Nuevo Usuario</button>
-            <br>
-            <br>
         <h3 class="card-title">Lista de Usuarios</h3>
+        <a href="{{ route('admin.users.create')}}"class="btn btn-primary float-right">
+            <i class="fa fa-plus"></i>Nuevo Usuario
+        </a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

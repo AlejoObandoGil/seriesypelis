@@ -31,7 +31,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User();
+        $roles = Role::with('permissions')->get();
+        $permissions = Permission::pluck('name', 'id');
+
+        return view('admin.users.create', compact('user', 'roles', 'permissions'));
     }
 
     /**
@@ -42,7 +46,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+        ]);
+        $data['password'] = str_random(8);
+        $user = User::create($data);
+
+        if($request->filled('roles'))
+        {
+            $user->assignRole($request->roles);
+        }
+        if($request->filled('permissions'))
+        {
+            $user->givePermissionTo($request->permissions);
+        }
+
+
+        return redirect()->route('admin.users.index')->withFlash('Usuario Registrado!');
     }
 
     /**
