@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveRolesRequest;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class RoleController extends Controller
 {
@@ -16,6 +18,8 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('create', new Role);
+
         return view('admin.roles.index', [
             'roles' => Role::all(),
         ]);
@@ -28,8 +32,10 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', $role = new Role);
+
         return view('admin.roles.create', [
-            'role' => new Role,
+            'role' => $role,
             'permissions' => Permission::pluck('name', 'id'),
         ]);
     }
@@ -40,14 +46,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveRolesRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|unique:roles',
-            'guard_name' => 'required'
-        ]);
+        $this->authorize('create', new Role);
 
-        $role = Role::create($data);
+        $role = Role::create($request->validated());
 
         if($request->has('permissions'))
         {
@@ -76,6 +79,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        $this->authorize('update', $role);
+
         return view('admin.roles.edit', [
             'role' => $role,
             'permissions' => Permission::pluck('name', 'id'),
@@ -89,15 +94,13 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(SaveRolesRequest $request, Role $role)
     {
-        $data = $request->validate([
-            'name' => 'required|unique:roles,name,' . $role->id,
-            'guard_name' => 'required'
-        ]);
+        $this->authorize('update', $role);
 
-        $role->update($data);
+        $role->update($request->validated());
         $role->permissions()->detach();
+
         if($request->has('permissions'))
         {
             $role->givePermissionTo($request->permissions);
@@ -111,8 +114,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $this->authorize('delete', $role);
+        $role->delete();
+
+        return redirect()->route('admin.roles.index', $role)->withFlash('Role Eliminado!');
     }
+
 }

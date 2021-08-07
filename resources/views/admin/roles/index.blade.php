@@ -28,7 +28,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Role</th>
+                    <th>Nombre</th>
                     <th>Guard name</th>
+                    <th>Permisos</th>
                     <th>Fecha de creación</th>
                     <th>Acciones</th>
                 </tr>
@@ -38,28 +40,27 @@
                     <tr>
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
+                        <td>{{ $role->display_name }}</td>
                         <td>{{ $role->guard_name }}</td>
+                        <td>{{ $role->permissions->pluck('display_name')->implode(', ') }}</td>
                         <td>{{ $role->created_at }}</td>
                         {{-- <td>{{ $role->permission }}</td> --}}
                         <td>
-                            <a href="{{ route('admin.roles.show', $role) }}"
-                                class="btn btn-xs btn-default">
-                                {{-- target="_blank"> --}}
-                                <i class="fa fa-eye"></i>
-                            </a>
                             <a href="{{ route('admin.roles.edit', $role) }}"
                                 class="btn btn-xs btn-info">
                                 <i class="fa fa-plus"></i>
                             </a>
-                            <form method="POST"
-                                action="{{ route('admin.roles.destroy', $role) }}"
-                                style="display: inline">
-                                {{ csrf_field() }} {{ method_field('DELETE') }}
-                                <button class="btn btn-xs btn-danger"
-                                    onclick="return confirm('¿Seguro que quieres eliminar este role?')">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </form>
+                            @if ($role->id !== 1)
+                                <form method="POST"
+                                    action="{{ route('admin.roles.destroy', $role) }}"
+                                    style="display: inline">
+                                    {{ csrf_field() }} {{ method_field('DELETE') }}
+                                    <button class="btn btn-xs btn-danger"
+                                        onclick="return confirm('¿Seguro que quieres eliminar este role?')">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

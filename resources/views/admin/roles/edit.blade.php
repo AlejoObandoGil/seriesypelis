@@ -29,26 +29,10 @@
             </div>
             <div class="card-body card-profile">
                 <form method="POST" action="{{ route('admin.roles.update', $role) }}">
-                    {{ csrf_field()}} {{ method_field('PUT') }}
-                    <div class="form-group">
-                        <label for="name">Nombre:</label>
-                        <input name="name" value="{{ old('name', $role->name) }}" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="guard_name">Guard name:</label>
-                        <select class="form-control" name="guard_name" id="">
-                            @foreach (config('auth.guards') as $guardName => $guard)
-                                <option {{ old('guard_name', $role->guard_name) === $guardName ? 'selected' : '' }}
-                                    value="{{ $guardName }}">{{ $guardName }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label>Permisos:</label>
-                            @include('admin.permissions.checkboxes', ['model' => $role])
-                        </div>
-                    </div>
+                    {{ method_field('PUT') }}
+
+                    @include('admin.roles.form')
+
                     <button href="#" class="btn btn-primary btn-block">Actualizar Role</button>
                 </form>
                 <!-- /.card-body -->

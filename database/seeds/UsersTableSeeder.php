@@ -33,7 +33,10 @@ class UsersTableSeeder extends Seeder
         $updateUsersPermission = Permission::create(['name' => 'Update users']);
         $deleteUsersPermission = Permission::create(['name' => 'Delete users']);
 
+        $viewRolesPermission = Permission::create(['name' => 'View roles']);
+        $createRolesPermission = Permission::create(['name' => 'Create roles']);
         $updateRolesPermission = Permission::create(['name' => 'Update roles']);
+        $deleteRolesPermission = Permission::create(['name' => 'Delete roles']);
 
         $adminRole->givePermissionTo($viewPostsPermission);
         $adminRole->givePermissionTo($createPostsPermission);
@@ -43,7 +46,10 @@ class UsersTableSeeder extends Seeder
         $adminRole->givePermissionTo($createUsersPermission);
         $adminRole->givePermissionTo($updateUsersPermission);
         $adminRole->givePermissionTo($deleteUsersPermission);
-        // $adminRole->givePermissionTo($updateRolesPermission);
+        $adminRole->givePermissionTo($viewRolesPermission);
+        $adminRole->givePermissionTo($createRolesPermission);
+        $adminRole->givePermissionTo($updateRolesPermission);
+        $adminRole->givePermissionTo($deleteRolesPermission);
 
         $writerRole->givePermissionTo($viewPostsPermission);
         $writerRole->givePermissionTo($createPostsPermission);
@@ -53,7 +59,10 @@ class UsersTableSeeder extends Seeder
         $modRole->givePermissionTo($createUsersPermission);
         $modRole->givePermissionTo($updateUsersPermission);
         $modRole->givePermissionTo($deleteUsersPermission);
-        // $modRole->givePermissionTo($updateRolesPermission);
+        $modRole->givePermissionTo($viewRolesPermission);
+        $modRole->givePermissionTo($createRolesPermission);
+        $modRole->givePermissionTo($updateRolesPermission);
+        $modRole->givePermissionTo($deleteRolesPermission);
 
         $admin = new User;
         $admin->name = 'JA';
