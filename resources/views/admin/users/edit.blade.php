@@ -3,7 +3,7 @@
 @section('header')
 
 <h1 class="m-0">{{ config('app.name')}}
-    <small>Perfil de Usuario</small>
+    <small>Editar Usuario</small>
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ route('admin.admin') }}"> <i class="fa fa-home"></i> Inicio </a></li>
@@ -67,12 +67,21 @@
                 <h3 class="box-title">Roles</h3>
             </div>
             <div class="card-body card-profile">
+                @role('Admin')
                 <form method="POST" action="{{ route('admin.users.roles.update', $user) }}">
                     {{ csrf_field()}} {{ method_field('PUT') }}
 
                     @include('admin.roles.checkboxes')
                     <button class="btn btn-primary btn-block">Actualizar Roles</button>
                 </form>
+                @else
+                    <ul class="list-group">
+                        @forelse ($user->roles as $role)
+                            <li class="list-group-item">{{ $role->name }}</li>
+                        @empty
+                            <li class="list-group-item">No tiene Roles asignados</li>
+                        @endforelse
+                @endrole
                 <!-- /.card-body -->
             </div>
         </div>
@@ -81,12 +90,22 @@
                 <h3 class="box-title">Permisos</h3>
             </div>
             <div class="card-body card-profile">
+                @role('Admin')
                 <form method="POST" action="{{ route('admin.users.permissions.update', $user) }}">
                     {{ csrf_field()}} {{ method_field('PUT') }}
 
-                    @include('admin.permissions.checkboxes')
+                    @include('admin.permissions.checkboxes' , ['model' => $user])
                     <button class="btn btn-primary btn-block">Actualizar Permisos</button>
                 </form>
+                @else
+                <ul class="list-group">
+
+                    @forelse ($user->permissions as $permission)
+                        <li class="list-group-item">{{ $permission->name }}</li>
+                    @empty
+                        <li class="list-group-item">No tiene Permisos asignados</li>
+                    @endforelse
+                @endrole
                 <!-- /.card-body -->
             </div>
         </div>

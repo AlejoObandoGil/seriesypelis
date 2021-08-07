@@ -36,6 +36,16 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function scopeAllowed($query)
+    {
+        // if(auth()->user()->hasRole('Admin'))
+        if(auth()->user()->can('view', $this))
+        {
+            return $query;
+        }
+        return $query->where('id', auth()->id());
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

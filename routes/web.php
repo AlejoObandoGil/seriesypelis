@@ -3,17 +3,18 @@
 Route::get('email', function(){
     return new App\Mail\LoginCredentials(App\User::first(), 'asd123');
 });
-
+// estaticas
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('nosotros', 'PagesController@about')->name('pages.about');
 Route::get('archivo', 'PagesController@archive')->name('pages.archive');
 Route::get('contact', 'PagesController@contact')->name('pages.contact');
 
-
+// dianmicas y filtros de posts
 Route::get('inicio/{post}', 'PostsController@show')->name('posts.show');
 Route::get('categoria/{category}', 'CategoryController@show')->name('category.show');
 Route::get('hashtag/{tag}', 'TagController@show')->name('tag.show');
 
+// admin
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
@@ -25,10 +26,14 @@ Route::group([
 
         Route::resource('posts', 'PostController', ['except' => 'show', 'as' => 'admin']);
         Route::resource('users', 'UserController', ['as' => 'admin']);
+        Route::resource('roles', 'RoleController', ['as' => 'admin']);
 
-        Route::put('users/{user}/roles', 'UserRolController@update')->name('admin.users.roles.update');
-        Route::put('users/{user}/permissions', 'UserPermissionController@update')->name('admin.users.permissions.update');
-
+        Route::middleware(['role:Admin|Moderador'])
+            ->put('users/{user}/roles', 'UserRolController@update')
+            ->name('admin.users.roles.update');
+        Route::middleware(['role:Admin|Moderador'])
+            ->put('users/{user}/permissions', 'UserPermissionController@update')
+            ->name('admin.users.permissions.update');
 
         Route::post('posts/{post}/photo', 'PhotoController@store')->name('admin.posts.photo.store');
         Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');

@@ -3,11 +3,11 @@
 @section('header')
 
 <h1 class="m-0">{{ config('app.name')}}
-    <small>Lista de Usuarios</small>
+    <small>Lista de Roles</small>
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ route('admin.admin') }}"> <i class="fa fa-home"></i> Inicio </a></li>
-    <li><a href="{{ route('admin.posts.index') }}"> <i class="fa fa-list"></i> Usuarios</a></li>
+    <li><a href="{{ route('admin.posts.index') }}"> <i class="fa fa-list"></i> Roles</a></li>
 </ol>
 
 @stop
@@ -16,49 +16,47 @@
 
 <div class="card card-dark">
     <div class="card-header">
-        <h3 class="card-title">Lista de Usuarios</h3>
-        <a href="{{ route('admin.users.create')}}"class="btn btn-primary float-right">
-            <i class="fa fa-plus"></i>Nuevo Usuario
+        <h3 class="card-title">Lista de Roles</h3>
+        <a href="{{ route('admin.roles.create')}}"class="btn btn-primary float-right">
+            <i class="fa fa-plus"></i>Nuevo Role
         </a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="user-table" class="table table-bordered table-striped">
+        <table id="role-table" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th>Fecha de registro</th>
-                    {{-- <th>Permisos</th> --}}
+                    <th>Role</th>
+                    <th>Guard name</th>
+                    <th>Fecha de creación</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($roles as $role)
                     <tr>
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->getRoleNames()->implode(', ') }}</td>
-                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $role->id }}</td>
+                        <td>{{ $role->name }}</td>
+                        <td>{{ $role->guard_name }}</td>
+                        <td>{{ $role->created_at }}</td>
+                        {{-- <td>{{ $role->permission }}</td> --}}
                         <td>
-                            <a href="{{ route('admin.users.show', $user) }}"
+                            <a href="{{ route('admin.roles.show', $role) }}"
                                 class="btn btn-xs btn-default">
                                 {{-- target="_blank"> --}}
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a href="{{ route('admin.users.edit', $user) }}"
+                            <a href="{{ route('admin.roles.edit', $role) }}"
                                 class="btn btn-xs btn-info">
                                 <i class="fa fa-plus"></i>
                             </a>
                             <form method="POST"
-                                action="{{ route('admin.users.destroy', $user) }}"
+                                action="{{ route('admin.roles.destroy', $role) }}"
                                 style="display: inline">
                                 {{ csrf_field() }} {{ method_field('DELETE') }}
                                 <button class="btn btn-xs btn-danger"
-                                    onclick="return confirm('¿Seguro que quieres eliminar este usuario?')">
+                                    onclick="return confirm('¿Seguro que quieres eliminar este role?')">
                                     <i class="fa fa-times"></i>
                                 </button>
                             </form>
@@ -100,7 +98,7 @@
 <!-- Page specific script TABLA-->
 <script>
     $(function () {
-        $("#user-table").DataTable({
+        $("#role-table").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
@@ -115,7 +113,6 @@
         });
     });
 </script>
-
 
 @endpush
 

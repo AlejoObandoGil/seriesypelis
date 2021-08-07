@@ -23,6 +23,10 @@ class CreatePostsTable extends Migration
             $table->mediumText('iframe')->nullable();
             $table->unsignedInteger('category_id')->nullable();
             $table->unsignedInteger('user_id');
+
+            $table->dropForeign('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

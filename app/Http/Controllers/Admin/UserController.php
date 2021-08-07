@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         // metodo para determinar la auth del usuario = admin|escritor
-        $users = User::all();
+        $users = User::allowed()->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -33,6 +33,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
+        $this->authorize('create', $user);
         $roles = Role::with('permissions')->get();
         $permissions = Permission::pluck('name', 'id');
 
@@ -47,6 +48,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', new User);
+
         $data = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
@@ -57,6 +60,9 @@ class UserController extends Controller
         if($request->filled('roles'))
         {
             $user->assignRole($request->roles);
+        }
+        else{
+            return redirect()->route('admin.users.create')->withFlash('El usuario debe tener por lo menos un role!');
         }
         if($request->filled('permissions'))
         {
@@ -76,6 +82,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('view', $user);
+
         return view('admin.users.show', compact('user'));
     }
 
@@ -87,6 +95,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         $roles = Role::with('permissions')->get();
         $permissions = Permission::pluck('name', 'id');
 
@@ -102,9 +112,10 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        $this->authorize('update', $user);
         $user->update($request->validated());
 
-        return back()->withFlash('Usuario actualizado!');
+        return redirect()->route('admin.users.edit', $user)->withFlash('Usuario actualizado!');
     }
 
     /**
@@ -113,8 +124,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $this->authorize('delete', $user);
+
+        $user->delete();
+        // $user->posts()->detach();
+
+        return redirect()->route('admin.users.index')->withFlash('Usuario eliminado!');
     }
 }

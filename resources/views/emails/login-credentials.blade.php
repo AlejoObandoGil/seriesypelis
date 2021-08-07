@@ -1,9 +1,9 @@
 @component('mail::message')
 # Bienvenido a {{ config('app.name') }}
-# Estos son tus datos de usuario!
 
 Utiliza tu usuario y contraseña para iniciar sesión.
-
+Una vez iniciada sesión, puedes cambiar la contraseña si quieres.
+{{-- lenguaje markdown --}}
 @component('mail::table')
 | Username | Contraseña |
 |:---------|:-----------|
@@ -12,9 +12,8 @@ Utiliza tu usuario y contraseña para iniciar sesión.
 @endcomponent
 
 @component('mail::button', ['url' => url('login')])
-Login
+Iniciar sesión
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+atentamente, {{ config('app.name') }}<br>
 @endcomponent
