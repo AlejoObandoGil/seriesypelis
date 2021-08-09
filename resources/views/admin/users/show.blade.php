@@ -39,7 +39,7 @@
                             <b>Roles</b> <a class="float-right">{{ $user->getRoleNames()->implode(', ') }}</a>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
                     <!-- /.card-body -->
                 </div>
             </div>

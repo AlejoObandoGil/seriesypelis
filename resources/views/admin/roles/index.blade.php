@@ -17,9 +17,11 @@
 <div class="card card-dark">
     <div class="card-header">
         <h3 class="card-title">Lista de Roles</h3>
-        <a href="{{ route('admin.roles.create')}}"class="btn btn-primary float-right">
-            <i class="fa fa-plus"></i>Nuevo Role
-        </a>
+        @can('create', $roles->first())
+            <a href="{{ route('admin.roles.create')}}"class="btn btn-primary float-right">
+                <i class="fa fa-plus"></i>Nuevo Role
+            </a>
+        @endcan
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -46,10 +48,13 @@
                         <td>{{ $role->created_at }}</td>
                         {{-- <td>{{ $role->permission }}</td> --}}
                         <td>
+                            @can('update', $role)
                             <a href="{{ route('admin.roles.edit', $role) }}"
                                 class="btn btn-xs btn-info">
                                 <i class="fa fa-plus"></i>
                             </a>
+                            @endcan
+                            @can('delete', $role)
                             @if ($role->id !== 1)
                                 <form method="POST"
                                     action="{{ route('admin.roles.destroy', $role) }}"
@@ -61,6 +66,7 @@
                                     </button>
                                 </form>
                             @endif
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

@@ -6,7 +6,7 @@
     @if (isset($title))
         <h1>{{ $title }}</h1>
     @endif
-    @foreach ($posts as $post)
+    @forelse ($posts as $post)
 		<article class="post">
             @if ($post->photos->count() === 1)
             <div class="img-center">
@@ -47,7 +47,14 @@
 				</footer>
 			</div>
 		</article>
-    @endforeach
+    @empty
+    <article class="post">
+
+        <div class="content-post">
+            <h1>No hay publicaciones todavia en esta categoria</h1>
+        </div>
+    </article>
+    @endforelse
 </section>
 <!-- fin del div.posts.container -->
 {{ $posts->links() }}

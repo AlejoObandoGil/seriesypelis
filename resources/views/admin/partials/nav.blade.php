@@ -20,11 +20,14 @@
         </a>
         <ul class="treeview-menu">
             <br>
+            {{-- @can('view', new App\Models\Post) --}}
             <li {{ setActiveRoute('admin.posts.index') }}>
                 <a href="{{ route('admin.posts.index') }}">
                     <i class="nav-icon fa fa-eye"></i> Lista de Publicaciones</a>
             </li>
+            {{-- @endcan --}}
             <br>
+            @can('create', new App\Models\Post)
             <li>
                 @if (request()->is('admin/posts/*'))
                     <a href="{{ route('admin.posts.index', '#create') }}" > <i class="nav-icon fa fa-plus"></i> Crear Publicaciones <span class="right badge badge-danger"> New </span></a>
@@ -32,9 +35,11 @@
                     <a href="#" data-toggle="modal" data-target="#exampleModal"> <i class="nav-icon fa fa-plus"></i> Crear Publicaciones <span class="right badge badge-danger"> New </span></a>
                 @endif
             </li>
+            @endcan
         </ul>
     </li>
     <br>
+    @can('view', new App\User)
     <li class="treeview" {{ setActiveRoute(['admin.users.index', 'admin.users.create']) }}>
         <a  href="#"><i class="nav-icon fa fa-users"></i> <span>Usuarios</span>
             <span class="pull-down-container">
@@ -56,5 +61,31 @@
             </li>
         </ul>
     </li>
+    @else
+    <li class="{{ setActiveRoute(['admin.users.show', 'admin.users.edit']) }}">
+        <a href="{{ route('admin.users.show', auth()->user()) }}">
+            <i class="nav-icon fas fa-user"></i>
+            <span>Perfil</span>
+        </a>
+    </li>
+    @endcan
+    <br>
+    @can('view', new \Spatie\Permission\Models\Role)
+    <li {{ setActiveRoute(['admin.roles.index', 'admin.roles.edit']) }}>
+        <a href="{{ route('admin.roles.index') }}">
+            <i class="nav-icon fas fa-user-tag"></i>
+            <span>Roles</span>
+        </a>
+    </li>
+    @endcan
+    <br>
+    @can('view', new \Spatie\Permission\Models\Permission)
+    <li {{ setActiveRoute(['admin.roles.index', 'admin.roles.edit']) }}>
+        <a href="{{ route('admin.roles.index') }}">
+            <i class="nav-icon fas fa-user-tag"></i>
+            <span>Permisos</span>
+        </a>
+    </li>
+    @endcan
 </ul>
 </nav>
