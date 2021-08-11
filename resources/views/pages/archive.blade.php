@@ -24,17 +24,19 @@
                 </ul>
             </div>
             <div class="latest-posts">
-                <h3 class="text-capitalize">Ultimas publicaciones</h3>
+                <h3 class="text-capitalize">Peliculas y Series recientes</h3>
                 @foreach ($posts as $post)
-                <a href="{{ route('posts.show', $post) }}">
-                    <p>{{ $post->title }}</p>
-                </a>
+                    <a href="{{ route('posts.show', $post) }}">
+                        <p>{{ $post->title }}</p>
+                    </a>
                 @endforeach
 
                 <h3 class="text-capitalize">Películas y series por año</h3>
                 <ul class="list-unstyled">
                     @foreach ($archive as $date)
-                    <li>{{ $date->year }} {{ $date->posts }}</li>
+                        <a href="{{ route('home', ['year' => $date->year]) }}">
+                            <li>{{ $date->year }} ({{ $date->posts }})</li>
+                        </a>
                     @endforeach
                 </ul>
             </div>

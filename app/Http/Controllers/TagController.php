@@ -11,7 +11,7 @@ class TagController extends Controller
     {
         return view('pages.home', [
             'title' => "Películas & Series / HashTag / #$tag->name",
-            'posts' => $tag->posts()->paginate()
+            'posts' => $tag->posts()->published()->paginate()
             ]);
     }
 }

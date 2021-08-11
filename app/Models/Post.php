@@ -60,9 +60,10 @@ class Post extends Model
     // metodo para validar post activos o correctos
     public function scopePublished($query)
     {
-        $query->whereNotNull('published_at')
-        ->where('published_at', '<=', Carbon::now())
-        ->latest('published_at');
+        $query->with(['category', 'tags', 'photos'])
+                ->whereNotNull('published_at')
+                ->where('published_at', '<=', Carbon::now())
+                ->latest('published_at');
     }
 
     public function scopeAllowed($query)
@@ -74,6 +75,17 @@ class Post extends Model
         }
         return $query->where('user_id', auth()->id());
     }
+
+    // public function scopeByYearAndMonth($query)
+    // {
+    //     return $query->selectRaw('year(published_at) year')
+    //                 ->selectRaw('monthname(published_at) monthname')
+    //                 ->selectRaw('month(published_at) month')
+    //                 ->selectRaw('count(*) posts')
+    //                 ->groupBy('year', 'monthname', 'month')
+    //                 ->orderBy('year')
+    //                 ->get();
+    // }
 
     public function isPublished()
     {

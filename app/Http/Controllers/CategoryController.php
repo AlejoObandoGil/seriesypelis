@@ -12,7 +12,7 @@ class CategoryController extends Controller
         // return $category->load('posts');
         return view('pages.home', [
             'title' => "Películas & Series / Género / $category->name",
-            'posts' => $category->posts()->paginate()
+            'posts' => $category->posts()->published()->paginate()
             ]);
     }
 }
