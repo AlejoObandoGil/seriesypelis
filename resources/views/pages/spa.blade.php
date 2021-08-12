@@ -12,7 +12,12 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
+    {{-- <style>
+        .router-link-exact-active{
+            color: red;
+        }
+    </style> --}}
 
     @stack('styles')
 
@@ -29,14 +34,36 @@
             </a>
             <h1>{{ config('app.name') }}</h1>
 
-            @include('partials.nav')
+            <nav class="custom-wrapper" id="menu">
+                <div class="pure-menu"></div>
+
+
+                <ul class="container-flex list-unstyled">
+                    <li class="pure-menu-item">
+                        <router-link to="/" class="pure-menu-link c-gris-2 text-uppercase">Inicio</router-link>
+                    </li>
+                    <li class="pure-menu-item">
+                        <router-link to="/categorias" class="pure-menu-link c-gris-2 text-uppercase">Categorias</router-link>
+                    </li>
+                    <li class="pure-menu-item">
+                        <router-link to="/nosotros" class="pure-menu-link c-gris-2 text-uppercase">Nosotros</router-link>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="{{ route('admin.admin') }}"
+                        class="pure-menu-link c-gris-2 text-uppercase {{ setActiveRoute('admin.admin') }}">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </nav>
 
             <figure class="logo-xs"><img src="/img/logo-p.png" alt=""></figure>
 		</div>
 	</header>
 
-    {{-- contenido --}}
-    @yield('content')
+    <router-view />
+
+{{-- @section('content') --}}
+<!-- fin del div.posts.container -->
+{{-- {{ $posts->appends(request()->all())->links() }} --}}
 
     <footer>
         <div class="container">
@@ -61,12 +88,41 @@
             </ul>
         </div>
     </footer>
-    </div>
+</div>
 
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src={{ mix('js/app.js') }}></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src={{ mix('js/app.js') }}></script>
 
-    @stack('scripts')
+@stack('scripts')
 
 </body>
 </html>
+
+
+@push('styles')
+
+    <link rel="stylesheet" type="text/css" href="/css/twitter-bootstrap.css">
+
+@endpush
+
+@push('scripts')
+
+    <script id="dsq-count-scr" src="//zendero.disqus.com/count.js" async></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <script src="/js/twitter-bootstrap.js"></script>
+
+@endpush
+
+{{-- <div class="gallery-photos masonry">
+{{-- '{ "itemSelector": ".gird-item", "columnWidth": 464 }'>
+    @foreach($post->photos->take(4) as $photo)
+        <figure class="grid-item grid-item--height2">
+            @if($loop->iteration === 4)
+                <div class="overlay">+ {{ $post->photos->count() }} Imagenes</div>
+            @endif
+            <img src="{{ url($photo->url) }}" class="img-responsive" alt="">
+        </figure>
+    @endforeach
+</div> --}}

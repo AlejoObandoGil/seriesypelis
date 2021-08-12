@@ -14,6 +14,8 @@ class Post extends Model
 
     protected $dates = ['published_at'];
 
+    protected $appends = ['published_date'];
+
     public static function boot()
     {
         parent::boot();
@@ -138,6 +140,11 @@ class Post extends Model
         });
 
         return $this->tags()->sync($tagIds);
+    }
+    // accesor de fechas de estreno
+    public function getPublishedDateAttribute()
+    {
+        return optional($this->published_at)->format('d M Y');
     }
 }
 

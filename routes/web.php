@@ -4,7 +4,8 @@ Route::get('email', function(){
     return new App\Mail\LoginCredentials(App\User::first(), 'asd123');
 });
 // estaticas
-Route::get('/', 'PagesController@home')->name('home');
+Route::get('/h', 'PagesController@home')->name('home');
+Route::get('/', 'PagesController@spa')->name('spa');
 Route::get('nosotros', 'PagesController@about')->name('pages.about');
 Route::get('archivo', 'PagesController@archive')->name('pages.archive');
 Route::get('contact', 'PagesController@contact')->name('pages.contact');
