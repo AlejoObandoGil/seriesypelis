@@ -58,7 +58,7 @@
 		</div>
 	</header>
 
-    <router-view />
+    <router-view :key="$route.fullPath"/>
 
 {{-- @section('content') --}}
 <!-- fin del div.posts.container -->

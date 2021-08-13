@@ -9,55 +9,17 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_PostList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostList.vue */ "./resources/js/components/PostList.vue");
 //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// import PostShow from './PostShow.vue'
+ // import PostShow from './PostShow.vue'
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    PostList: _components_PostList_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   //   components: { PostShow },
   data: function data() {
     return {
@@ -93,84 +55,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "posts container" },
-    [
-      _vm._l(_vm.posts, function(post, index) {
-        return _c("article", { key: index, staticClass: "post" }, [
-          _c(
-            "div",
-            { staticClass: "content-post" },
-            [
-              _c("post-header", { attrs: { post: post } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "divider" }, [
-                _c("p", { domProps: { textContent: _vm._s(post.description) } })
-              ]),
-              _vm._v(" "),
-              _c("footer", { staticClass: "container-flex space-between" }, [
-                _c(
-                  "div",
-                  { staticClass: "read-more" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "text-uppercase c-green",
-                        attrs: {
-                          to: { name: "posts_show", params: { url: post.url } }
-                        }
-                      },
-                      [_vm._v("Leer más")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "tags container-flex" },
-                  _vm._l(post.tags, function(tag, index) {
-                    return _c(
-                      "span",
-                      {
-                        key: index,
-                        staticClass: "tag c-gray-1 text-capitalize"
-                      },
-                      [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v("#" + _vm._s(tag.name))
-                        ])
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ])
-            ],
-            1
-          )
-        ])
-      }),
-      _vm._v(" "),
-      !_vm.posts.length
-        ? _c("article", { staticClass: "post" }, [_vm._m(0)])
-        : _vm._e()
-    ],
-    2
-  )
+  return _c("post-list", { attrs: { posts: _vm.posts } })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-post" }, [
-      _c("h1", [_vm._v("No hay publicaciones todavia en esta categoria")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

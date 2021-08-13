@@ -26,14 +26,23 @@ export default new Router({
         {
             path: '/inicio/:url',
             name: 'posts_show',
+            props: true,
             // beforeEnter: authMiddleware,
             component: () => import('./views/PostShow.vue')
         },
         {
             path: '/categorias/:category',
-            name: 'post_category',
+            name: 'posts_category',
+            props: true,
             // beforeEnter: authMiddleware,
             component: () => import('./views/PostCategory.vue')
+        },
+        {
+            path: '/etiquetas/:tag',
+            name: 'posts_tag',
+            props: true,
+            // beforeEnter: authMiddleware,
+            component: () => import('./views/PostTag.vue')
         },
         {
             path: '*',

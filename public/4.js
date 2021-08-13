@@ -67,6 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
   data: function data() {
     return {
       post: {
@@ -78,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/api/inicio/".concat(this.$route.params.url)).then(function (res) {
+    axios.get("/api/inicio/".concat(this.url)).then(function (res) {
       _this.post = res.data;
     })["catch"](function (err) {
       console.log(err);

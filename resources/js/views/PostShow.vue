@@ -58,6 +58,7 @@
 <script>
 
 export default {
+    props: ['url'],
     data() {
         return{
             post: {
@@ -67,7 +68,7 @@ export default {
         }
     },
     mounted(){
-        axios.get(`/api/inicio/${this.$route.params.url}`)
+        axios.get(`/api/inicio/${this.url}`)
             .then(res => {
                 this.post = (res.data)
             })
