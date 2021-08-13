@@ -18,3 +18,6 @@ use Illuminate\Http\Request;
 // });
 
 Route::get('posts', 'PagesController@home');
+Route::get('inicio/{post}', 'PostsController@show');
+Route::get('categorias/{category}', 'CategoryController@show');
+

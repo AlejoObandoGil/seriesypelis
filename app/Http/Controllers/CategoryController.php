@@ -9,10 +9,16 @@ class CategoryController extends Controller
 {
     public function show(Category $category)
     {
+        $posts = $category->posts()->published()->paginate();
+
+        if (request()->wantsJson())
+        {
+            return $posts;
+        }
         // return $category->load('posts');
         return view('pages.home', [
             'title' => "Películas & Series / Género / $category->name",
-            'posts' => $category->posts()->published()->paginate()
+            'posts' => $posts
             ]);
     }
 }

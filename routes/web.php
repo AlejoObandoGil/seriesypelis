@@ -12,8 +12,8 @@ Route::get('contact', 'PagesController@contact')->name('pages.contact');
 
 // dianmicas y filtros de posts
 Route::get('inicio/{post}', 'PostsController@show')->name('posts.show');
-Route::get('categoria/{category}', 'CategoryController@show')->name('category.show');
-Route::get('hashtag/{tag}', 'TagController@show')->name('tag.show');
+Route::get('categorias/{category}', 'CategoryController@show')->name('category.show');
+Route::get('hashtags/{tag}', 'TagController@show')->name('tag.show');
 
 // admin
 Route::group([

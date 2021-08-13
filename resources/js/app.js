@@ -1,33 +1,10 @@
 require('./bootstrap');
 
 import Vue from 'vue';
-import Router from 'vue-router';
+import router from './routes';
+import PostHeader from './components/PostHeader.vue';
 
-Vue.use(Router);
-
-const router = new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'Home',
-            // beforeEnter: authMiddleware,
-            component: () => import('./views/Home.vue')
-        },
-        {
-            path: '/categorias',
-            name: 'Categories',
-            // beforeEnter: authMiddleware,
-            component: () => import('./views/Categories.vue')
-        },
-        {
-            path: '/Nosotros',
-            name: 'About',
-            // beforeEnter: authMiddleware,
-            component: () => import('./views/About.vue')
-        }
-    ],
-    linkExactActiveClass: 'active'
-});
+Vue.component('post-header', PostHeader);
 
 const app = new Vue({
     el: '#app',

@@ -37,16 +37,15 @@
             <nav class="custom-wrapper" id="menu">
                 <div class="pure-menu"></div>
 
-
                 <ul class="container-flex list-unstyled">
                     <li class="pure-menu-item">
-                        <router-link to="/" class="pure-menu-link c-gris-2 text-uppercase">Inicio</router-link>
+                        <router-link :to="{name: 'home'}" class="pure-menu-link c-gris-2 text-uppercase">Inicio</router-link>
                     </li>
                     <li class="pure-menu-item">
-                        <router-link to="/categorias" class="pure-menu-link c-gris-2 text-uppercase">Categorias</router-link>
+                        <router-link :to="{name: 'categories'}" class="pure-menu-link c-gris-2 text-uppercase">Categorias</router-link>
                     </li>
                     <li class="pure-menu-item">
-                        <router-link to="/nosotros" class="pure-menu-link c-gris-2 text-uppercase">Nosotros</router-link>
+                        <router-link :to="{name: 'about'}" class="pure-menu-link c-gris-2 text-uppercase">Nosotros</router-link>
                     </li>
                     <li class="pure-menu-item">
                         <a href="{{ route('admin.admin') }}"

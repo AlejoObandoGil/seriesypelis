@@ -56,7 +56,7 @@ export default {
     },
 
     mounted(){
-        axios.get('/api/posts')
+        axios.get(`/api/categorias/${this.$route.params.category}`)
             .then(res => {
                 this.posts = res.data.data
                 console.log(this.posts)
@@ -67,3 +67,4 @@ export default {
     }
 }
 </script>
+
