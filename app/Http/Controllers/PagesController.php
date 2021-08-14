@@ -25,7 +25,7 @@ class PagesController extends Controller
             }
 
          // $posts = App\Models\Post::all();
-        $posts = $query->paginate();
+        $posts = $query->paginate(1);
 
         if ( request()->wantsJson())
         {
@@ -42,20 +42,24 @@ class PagesController extends Controller
 
     public function archive()
     {
-        $archive = Post::selectRaw('year(published_at) year')
-                    ->selectRaw('monthname(published_at) monthname')
-                    ->selectRaw('month(published_at) month')
-                    ->selectRaw('count(*) posts')
-                    ->groupBy('year', 'monthname', 'month')
-                    ->orderBy('year')
-                    ->get();
         // $archive = Post::byYearAndMonth()->get();
-
-        return view('pages.archive', [
+        $data = [
             'authors' => User::take(4)->get(),
             'categories' => Category::all(),
             'posts' => Post::latest('published_at')->take(10)->get(),
-            'archive' => $archive
-        ]);
+            'archive' => Post::selectRaw('year(published_at) year')
+                        ->selectRaw('monthname(published_at) monthname')
+                        ->selectRaw('month(published_at) month')
+                        ->selectRaw('count(*) posts')
+                        ->groupBy('year', 'monthname', 'month')
+                        ->orderBy('year')
+                        ->get()
+        ];
+
+        if (request()->wantsJson())
+        {
+            return$data;
+        }
+        return view('pages.archive', $data);
     }
 }

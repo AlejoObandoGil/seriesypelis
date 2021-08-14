@@ -2,9 +2,9 @@
             <!-- ---------------------------------------HEADER------------------------------- -->
     <section class="posts container">
 
-        <post-list-item v-for="post in posts" :key="post.id" :post="post"></post-list-item>
+        <post-list-item v-for="post in items" :key="post.id" :post="post"></post-list-item>
         <!-- @empty -->
-        <article class="post" v-if="! posts.length">
+        <article class="post" v-if="! items.length">
 
             <div class="content-post">
 
@@ -15,9 +15,9 @@
     </section>
 </template>
 <script>
-import PostListItem from './PostListItem.vue'
+// import PostListItem from './PostListItem.vue'
 export default {
-  components: { PostListItem },
-    props: ['posts'],
+//   components: { PostListItem },
+    props: ['items'],
 }
 </script>

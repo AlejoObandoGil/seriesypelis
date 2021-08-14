@@ -12,10 +12,10 @@ export default new Router({
             component: () => import('./views/Home.vue')
         },
         {
-            path: '/categorias',
-            name: 'categories',
+            path: '/archivo',
+            name: 'archive',
             // beforeEnter: authMiddleware,
-            component: () => import('./views/Categories.vue')
+            component: () => import('./views/Archive.vue')
         },
         {
             path: '/nosotros',

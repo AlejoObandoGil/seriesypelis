@@ -137,7 +137,14 @@ var render = function() {
           _vm._m(1)
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _c("div", { staticClass: "divider" }, [
+          _c("div", {
+            staticClass: "comments",
+            staticStyle: { "padding-top": "50px" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "links" }, [_c("disqus-comment")], 1)
+        ])
       ],
       1
     )
@@ -164,19 +171,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "tag c-gray-1 text-capitalize" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "comments" }, [
-      _c("div", {
-        staticClass: "divider",
-        staticStyle: { "padding-top": "50px" }
-      }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "disqus_thread" } })
-    ])
   }
 ]
 render._withStripped = true
@@ -189,15 +183,14 @@ render._withStripped = true
 /*!*****************************************!*\
   !*** ./resources/js/views/PostShow.vue ***!
   \*****************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostShow_vue_vue_type_template_id_13a2755c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostShow.vue?vue&type=template&id=13a2755c& */ "./resources/js/views/PostShow.vue?vue&type=template&id=13a2755c&");
 /* harmony import */ var _PostShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostShow.vue?vue&type=script&lang=js& */ "./resources/js/views/PostShow.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _PostShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _PostShow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -227,7 +220,7 @@ component.options.__file = "resources/js/views/PostShow.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/views/PostShow.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

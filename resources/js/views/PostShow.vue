@@ -43,12 +43,12 @@
             </div>
         </footer>
 
-        <div class="comments"><!-- .comments -->
-            <div class="divider" style="padding-top: 50px">
+        <div class="divider" ><!-- .comments -->
+            <div class="comments" style="padding-top: 50px">
                 <!-- @include('partials.social-links') -->
             </div>
-            <div id="disqus_thread">
-                <!-- @include('partials.disqus-script') -->
+            <div class="links">
+                <disqus-comment />
             </div>
         </div>
     </div>

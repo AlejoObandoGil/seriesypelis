@@ -8,7 +8,8 @@
         <div class="post-category">
             <span class="category text-capitalize">
                 <!-- <a href="{{ route('category.show', $post->category) }}"> -->
-                <router-link :to="{name: 'posts_category', params: {category: post.category.url}}"> {{ post.category.name }}
+                <router-link :to="{name: 'posts_category', params: {category: post.category.url}}">
+                    {{ post.category.name }}
                 </router-link>
             </span>
         </div>
