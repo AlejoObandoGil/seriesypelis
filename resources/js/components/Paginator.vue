@@ -18,16 +18,16 @@ export default {
         }
     },
     mounted(){
-    axios.get(`${ this.url }?page=${this.$route.query.page || 1}`)
-        .then(res => {
-            this.pagination = res.data
-            this.items = res.data.data
-            delete this.pagination.data
-    })
-    .catch(err => {
-        console.log(err)
-    })
-},
+        axios.get(`${ this.url }?page=${this.$route.query.page || 1}`)
+            .then(res => {
+                this.pagination = res.data
+                this.items = res.data.data
+                delete this.pagination.data
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },
 }
 </script>
 

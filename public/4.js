@@ -64,8 +64,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
   data: function data() {
@@ -129,21 +127,35 @@ var render = function() {
             },
             [
               _c("span", { staticClass: "c-gris" }, [
-                _vm._v(_vm._s(_vm.post.owner.name))
+                _vm._v("Publicado por: " + _vm._s(_vm.post.owner.name))
               ])
             ]
           ),
           _vm._v(" "),
-          _vm._m(1)
+          _c(
+            "div",
+            { staticClass: "tags container-flex" },
+            _vm._l(_vm.post.tags, function(tag, index) {
+              return _c(
+                "span",
+                { key: index, staticClass: "tag c-gray-1 text-capitalize" },
+                [_c("tag-links", { attrs: { tag: tag } })],
+                1
+              )
+            }),
+            0
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "divider" }, [
-          _c("div", {
-            staticClass: "comments",
-            staticStyle: { "padding-top": "50px" }
-          }),
+          _c(
+            "div",
+            { staticClass: "links", staticStyle: { "padding-top": "50px" } },
+            [_c("social-links", { attrs: { description: _vm.post.title } })],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "links" }, [_c("disqus-comment")], 1)
+          _c("div", { staticClass: "comments" }, [_c("disqus-comment")], 1)
         ])
       ],
       1
@@ -158,19 +170,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "divider" }, [
       _c("div", { staticClass: "image-w-text" }, [_c("div")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tags container-flex",
-        staticStyle: { "padding-top": "20px" }
-      },
-      [_c("span", { staticClass: "tag c-gray-1 text-capitalize" })]
-    )
   }
 ]
 render._withStripped = true

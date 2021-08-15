@@ -30,24 +30,22 @@
 <!-- {{-- ---------------------------------------FOOTER------------------------------- --}} -->
         <footer class="container-flex space-between">
             <div class="tags container-flex" style="padding-top: 20px">
-                <span class="c-gris">{{ post.owner.name }}</span>
+                <span class="c-gris">Publicado por: {{ post.owner.name }}</span>
                 <!-- <span class="c-gris">Publicado por: {{ $post->owner->name }} -->
                 <!-- </span> -->
             </div>
-            <div class="tags container-flex" style="padding-top: 20px">
-                <!-- @foreach ($post->tags as $tag) -->
-                    <span class="tag c-gray-1 text-capitalize">
-                        <!-- <a href="{{ route('tag.show', $tag) }}">#{{ $tag->name }}</a> -->
-                    </span>
-                <!-- @endforeach -->
+            <div class="tags container-flex">
+                <span class="tag c-gray-1 text-capitalize" v-for="(tag, index) in post.tags" :key="index">
+                    <tag-links :tag="tag"></tag-links>
+                </span>
             </div>
         </footer>
 
         <div class="divider" ><!-- .comments -->
-            <div class="comments" style="padding-top: 50px">
-                <!-- @include('partials.social-links') -->
+            <div class="links" style="padding-top: 50px">
+                <social-links :description="post.title"></social-links>
             </div>
-            <div class="links">
+            <div class="comments">
                 <disqus-comment />
             </div>
         </div>

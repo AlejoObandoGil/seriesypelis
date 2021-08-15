@@ -15,39 +15,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "section",
+    { staticClass: "pages container" },
+    [_vm._m(0), _vm._v(" "), _c("contact-form")],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "pages container" }, [
-      _c("div", { staticClass: "page page-about" }, [
-        _c("h1", { staticClass: "text-capitalize" }, [_vm._v("about")]),
-        _vm._v(" "),
-        _c("cite", [
-          _vm._v(
-            "Aliquam rhoncus tincidunt dui ut auctor. Maecenas eget purus maximus, commodo sem et, porta nunc. Maecenas lacinia nibh in elementum sagittis."
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "divider-2",
-          staticStyle: { margin: "35px 0" }
-        }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Maecenas auctor, libero sit amet varius lacinia, ante orci tincidunt lorem, at posuere neque ligula eu sapien. Etiam pellentesque, leo a porta auctor, nisi magna pellentesque mauris, eu lacinia risus lectus at diam. In vel consequat orci. Integer quis tristique enim. Proin ut orci ut ex eleifend porttitor. Vestibulum cursus sodales rhoncus."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Cras ac elit non massa sodales commodo. Nullam dapibus sed orci nec finibus. Sed gravida nibh at mattis mattis. Ut bibendum orci at diam pharetra viverra. Nam pellentesque varius eleifend. Integer vitae elit viverra, mollis quam et, vehicula odio."
-          )
-        ])
+    return _c("div", { staticClass: "page page-about" }, [
+      _c("h1", { staticClass: "text-capitalize" }, [
+        _vm._v("Peliculas&Series")
+      ]),
+      _vm._v(" "),
+      _c("cite", [
+        _vm._v(
+          "Aliquam rhoncus tincidunt dui ut auctor. Maecenas eget purus maximus, commodo sem et, porta nunc. Maecenas lacinia nibh in elementum sagittis."
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "divider-2",
+        staticStyle: { margin: "35px 0" }
+      }),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Maecenas auctor, libero sit amet varius lacinia, ante orci tincidunt lorem, at posuere neque ligula eu sapien. Etiam pellentesque, leo a porta auctor, nisi magna pellentesque mauris, eu lacinia risus lectus at diam. In vel consequat orci. Integer quis tristique enim. Proin ut orci ut ex eleifend porttitor. Vestibulum cursus sodales rhoncus."
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Cras ac elit non massa sodales commodo. Nullam dapibus sed orci nec finibus. Sed gravida nibh at mattis mattis. Ut bibendum orci at diam pharetra viverra. Nam pellentesque varius eleifend. Integer vitae elit viverra, mollis quam et, vehicula odio."
+        )
       ])
     ])
   }

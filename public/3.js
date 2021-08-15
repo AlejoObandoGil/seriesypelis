@@ -51,6 +51,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 // import CategoriesVue from './Categories.vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -203,15 +207,29 @@ var render = function() {
               "ul",
               { staticClass: "list-unstyled" },
               _vm._l(_vm.archive, function(date, index) {
-                return _c("li", { key: index }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(date.year) +
-                      " (" +
-                      _vm._s(date.posts) +
-                      ")\n                    "
-                  )
-                ])
+                return _c(
+                  "li",
+                  { key: index },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "text-uppercase c-green",
+                        attrs: { to: "/?year=" + date.year }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(date.year) +
+                            " (" +
+                            _vm._s(date.posts) +
+                            ")\n                        "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
               }),
               0
             )

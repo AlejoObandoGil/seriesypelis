@@ -22,5 +22,10 @@ Route::get('inicio/{post}', 'PostsController@show');
 Route::get('categorias/{category}', 'CategoryController@show');
 Route::get('etiquetas/{tag}', 'TagController@show');
 Route::get('archivo', 'PagesController@archive');
+Route::post('mensajes', function(){
+    return response()->json([
+        'status' => 'OK'
+    ]);
+});
 
 

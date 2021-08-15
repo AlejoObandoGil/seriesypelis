@@ -1,19 +1,19 @@
 <?php
 
+// // estaticas
+// Route::get('/', 'PagesController@home')->name('home');
+// Route::get('nosotros', 'PagesController@about')->name('pages.about');
+// Route::get('archivo', 'PagesController@archive')->name('pages.archive');
+// Route::get('contact', 'PagesController@contact')->name('pages.contact');
+
+// // dianmicas y filtros de posts
+// Route::get('inicio/{post}', 'PostsController@show')->name('posts.show');
+// Route::get('categorias/{category}', 'CategoryController@show')->name('category.show');
+// Route::get('hashtags/{tag}', 'TagController@show')->name('tag.show');
+
 Route::get('email', function(){
     return new App\Mail\LoginCredentials(App\User::first(), 'asd123');
 });
-// estaticas
-Route::get('/h', 'PagesController@home')->name('home');
-Route::get('/', 'PagesController@spa')->name('spa');
-Route::get('nosotros', 'PagesController@about')->name('pages.about');
-Route::get('archivo', 'PagesController@archive')->name('pages.archive');
-Route::get('contact', 'PagesController@contact')->name('pages.contact');
-
-// dianmicas y filtros de posts
-Route::get('inicio/{post}', 'PostsController@show')->name('posts.show');
-Route::get('categorias/{category}', 'CategoryController@show')->name('category.show');
-Route::get('hashtags/{tag}', 'TagController@show')->name('tag.show');
 
 // admin
 Route::group([
@@ -83,3 +83,6 @@ Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+// Ruta principal de spa y blog principal
+Route::get('/{any?}', 'PagesController@spa')->name('home')->where('any', '.*');

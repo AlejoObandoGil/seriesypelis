@@ -244,12 +244,17 @@ a.btn-bar{
 	resize: vertical;
 	padding: 25px 0 0 15px;
 }
-.page-contact .form-contact .send-message a{
+.page-contact .form-contact .send-message button{
 	display: block;
 	text-decoration: none;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-top: 25px;
     font-size: 19px;
+    border:none;
+    border-color: #1abc9c;
+    cursor:pointer;
+    padding: 15xp 18xp;
+    outline: none;
 }
 
 .custom-wrapper {

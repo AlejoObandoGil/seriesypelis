@@ -12,14 +12,26 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
     {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
     {{-- <style>
         .router-link-exact-active{
             color: red;
         }
     </style> --}}
-
     @stack('styles')
+    <style>
+        .slide-fade-enter-active {
+        transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-to{
+        transform: translateX(10px);
+        opacity: 0;
+        }
+    </style>
 
 </head>
 <body>
@@ -54,11 +66,25 @@
                 </ul>
             </nav>
 
-            <figure class="logo-xs"><img src="/img/logo-p.png" alt=""></figure>
+            {{-- <figure class="logo-xs"><img src="/img/logo-p.png" alt=""></figure> --}}
 		</div>
 	</header>
 
-    <router-view :key="$route.fullPath"/>
+    {{-- <transition name="slide-fade">
+        <router-view :key="$route.fullPath"/>
+    </transition> --}}
+    <div style="min-height: 100vh">
+        <transition
+            name="custom-classes-transition"
+            :duration="{ enter: 500, leave: 300 }"
+            mode="out-in"
+            enter-active-class="animated bounceInLeft"
+            leave-active-class="animated bounceOutRight"
+        >
+            <router-view :key="$route.fullPath"/>
+        </transition>
+    </div>
+
 
 {{-- @section('content') --}}
 <!-- fin del div.posts.container -->

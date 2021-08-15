@@ -26,13 +26,9 @@
                     </router-link>
                 </div>
                 <div class="tags container-flex">
-                        <span class="tag c-gray-1 text-capitalize" v-for="(tag, index) in post.tags" :key="index">
-                            <router-link
-                                class="text-uppercase c-green"
-                                :to="{name: 'posts_tag', params: {tag: tag.url }}" >
-                                #{{ tag.name }}
-                            </router-link>
-                        </span>
+                    <span class="tag c-gray-1 text-capitalize" v-for="(tag, index) in post.tags" :key="index">
+                        <tag-links :tag="tag"></tag-links>
+                    </span>
                 </div>
             </footer>
         </div>
@@ -40,7 +36,9 @@
 </template>
 
 <script>
+import TagLinks from './TagLinks.vue'
 export default {
+  components: { TagLinks },
     props: ['post'],
 }
 </script>

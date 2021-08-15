@@ -32,7 +32,11 @@
                 <h3 class="text-capitalize">Películas y series por año</h3>
                 <ul class="list-unstyled">
                     <li v-for="(date, index) in archive" :key="index">
-                        {{ date.year }} ({{ date.posts }})
+                        <router-link
+                            class="text-uppercase c-green"
+                            :to="`/?year=${date.year}`" >
+                            {{ date.year }} ({{ date.posts }})
+                        </router-link>
                     </li>
                 </ul>
             </div>

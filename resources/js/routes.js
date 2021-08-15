@@ -51,6 +51,10 @@ export default new Router({
             component: () => import('./views/errors/404.vue')
         }
     ],
-    linkExactActiveClass: 'active'
+    linkExactActiveClass: 'active',
+    mode: 'history',
+    scrollBehavior(){
+        return { x:0, y:0 }
+    }
 });
 
