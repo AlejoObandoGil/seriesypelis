@@ -33,11 +33,11 @@
 
                 <h3 class="text-capitalize">Películas y series por año</h3>
                 <ul class="list-unstyled">
-                    @foreach ($archive as $date)
+                    {{-- @foreach ($archive as $date)
                         <a href="{{ route('home', ['year' => $date->year]) }}">
                             <li>{{ $date->year }} ({{ $date->posts }})</li>
                         </a>
-                    @endforeach
+                    @endforeach --}}
                 </ul>
             </div>
         </div>
