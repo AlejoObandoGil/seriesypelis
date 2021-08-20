@@ -58,7 +58,7 @@
             </ul>
         </div>
     </footer>
-    <script src={{"mix('js/app.js')"}}></script>
+    {{-- <script src={{"mix('js/app.js')"}}></script> --}}
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     @stack('scripts')
