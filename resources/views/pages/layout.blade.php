@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
 
     @stack('styles')
 
@@ -58,7 +58,7 @@
             </ul>
         </div>
     </footer>
-    <script src={{"mix('js/app.js')"}}></script>
+    {{-- <script src={{"mix('js/app.js')"}}></script> --}}
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     @stack('scripts')
