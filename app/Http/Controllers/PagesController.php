@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\Post;
+use App\Models\Season;
+use App\Models\Video;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -13,16 +15,18 @@ class PagesController extends Controller
     public function home()
     {
         $query = Post::published();
+        $seasons = Season::all();
+        $videos = Video::all();
 
         if(request('year'))
             {
                 $query->whereYear('published_at', request('year'));
             }
 
-         // $posts = App\Models\Post::all();
+        // $posts = App\Models\Post::all();
         $posts = $query->paginate();
 
-        return view('pages.home', compact('posts')); //['posts' => $posts]
+        return view('pages.home', compact('posts', 'seasons', 'videos')); //['posts' => $posts]
     }
 
     public function about()

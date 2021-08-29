@@ -127,15 +127,14 @@ class PostsTableSeeder extends Seeder
         // $post->tags()->attach(1);
         // guardar en la BD
         $post->save();
-
         $post->tags()->attach(1);
         $post->tags()->attach(2);
+
 
         $post = new Post;
         // llamado a los valores de la BD
         $post ->title = "Peaky Blinders";
         $post ->url = str_slug("Peaky Blinders");
-
         $post ->description = "Serie de drama y gansters";
         $post ->body = "Peaky Blinders es una serie de televisión inglesa de drama histórico, emitida por el canal BBC Two. La serie está protagonizada por Cillian Murphy y se centra en una familia de gánsteres de Birmingham, durante los años veinte y del ascenso de su jefe, Thomas Shelby.
             Los creadores de la serie se basaron en los Peaky Blinders, una banda criminal que existió en la ciudad de Birmingham a mediados del siglo XX y que se caracterizaba porque cosía hojas de afeitar en sus gorras.
@@ -173,7 +172,6 @@ class PostsTableSeeder extends Seeder
         // llamado a los valores de la BD
         $post ->title = "Dark";
         $post ->url = str_slug("Dark");
-
         $post ->description = "Serie de suspenso y ciencia ficción";
         $post ->body = "Dark es una serie de televisión web alemana de suspense y ciencia ficción creada por Baran bo Odar y Jantje Friese.5​6​7​ Situada en la ficticia ciudad de Winden (Alemania), Dark sigue las secuelas de la desaparición de un niño que expone los secretos y las conexiones ocultas entre cuatro familias mientras desentrañan lentamente una siniestra conspiración de viaje en el tiempo que abarca tres generaciones. A lo largo de la serie, Dark explora las implicaciones existenciales del tiempo y sus efectos sobre la naturaleza humana.
             Dark, la primera serie original de Netflix en idioma alemán; se estrenó en el servicio de streaming Netflix el 1 de diciembre de 2017. La primera temporada fue recibida con reseñas positivas de los críticos, que hicieron comparaciones iniciales con Stranger Things, otra serie de Netflix.";

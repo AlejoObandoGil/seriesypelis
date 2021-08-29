@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PostsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(VideoTableSeeder::class);
 
         // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

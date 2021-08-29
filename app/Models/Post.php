@@ -57,10 +57,22 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // Un post puede tener muchas temporadas
+    public function seasons()
+    {
+        return $this->hasMany(Season::class);
+    }
+
+    // Un post puede tener muchos capitulos
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
+
     // metodo para validar post activos o correctos
     public function scopePublished($query)
     {
-        $query->with(['category', 'tags', 'photos'])
+        $query->with(['category', 'tags', 'photos', 'seasons', 'videos'])
                 ->whereNotNull('published_at')
                 ->where('published_at', '<=', Carbon::now())
                 ->latest('published_at');

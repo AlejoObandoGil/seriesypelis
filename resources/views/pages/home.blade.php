@@ -37,7 +37,21 @@
 {{-- ---------------------------------------FOOTER------------------------------- --}}
 				<footer class="container-flex space-between">
 					<div class="read-more">
-						<a href="/inicio/{{ $post->url }}" class="text-uppercase c-green">Leer más</a>
+                        {{-- <p>{{$post}}</p> --}}
+                        @forelse ($post->seasons as $season)
+                            @if ($post->id == $season->post_id)
+                                <a
+                                    href="/{{ $post->url }}/{{ $season->first()->url_season }}/{{ $season->videos->first()['url_chapter'] }}"
+                                    class="text-uppercase c-green">Leer más
+                                </a>
+                                @break
+                            @endif
+                        @empty
+                            <a
+                                href="/{{ $post->url }}"
+                                class="text-uppercase c-green">Leer más
+                            </a>
+                        @endforelse
 					</div>
 					<div class="tags container-flex">
 						@foreach ($post->tags as $tag)
