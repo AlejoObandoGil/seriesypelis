@@ -41,14 +41,14 @@
                         @forelse ($post->seasons as $season)
                             @if ($post->id == $season->post_id)
                                 <a
-                                    href="/{{ $post->url }}/{{ $season->first()->url_season }}/{{ $season->videos->first()['url_chapter'] }}"
+                                    href="inicio/{{ $post->url }}/{{ $season->first()->url_season }}/{{ $season->videos->first()['url_chapter'] }}"
                                     class="text-uppercase c-green">Leer más
                                 </a>
                                 @break
                             @endif
                         @empty
                             <a
-                                href="/{{ $post->url }}"
+                                href="inicio/{{ $post->url }}"
                                 class="text-uppercase c-green">Leer más
                             </a>
                         @endforelse

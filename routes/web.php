@@ -10,7 +10,7 @@ Route::get('archivo', 'PagesController@archive')->name('pages.archive');
 Route::get('contact', 'PagesController@contact')->name('pages.contact');
 
 // dianmicas y filtros de posts
-Route::get('/{post}/{season?}/{chapter?}', 'PostsController@show')->name('posts.show');
+Route::get('inicio/{post}/{season?}/{chapter?}', 'PostsController@show')->name('posts.show');
 Route::get('categoria/{category}', 'CategoryController@show')->name('category.show');
 Route::get('hashtag/{tag}', 'TagController@show')->name('tag.show');
 
