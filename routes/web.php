@@ -37,6 +37,16 @@ Route::group([
 
         Route::post('posts/{post}/photo', 'PhotoController@store')->name('admin.posts.photo.store');
         Route::delete('photos/{photo}', 'PhotoController@destroy')->name('admin.photos.destroy');
+
+        // limpiar cache
+        Route::get('/clear-cache', function () {
+            echo Artisan::call('config:clear');
+            echo Artisan::call('config:cache');
+            echo Artisan::call('cache:clear');
+            echo Artisan::call('route:clear');
+
+            return 'cache clean successfull!';
+        });
 });
 
 // Authentication Routes...

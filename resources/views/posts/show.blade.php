@@ -74,7 +74,7 @@
                             <p>
                                 <a
                                 {{-- variables en la ruta son opcionales ? : "" --}}
-                                    href="inicio/{{ $post->url }}/{{ $season->url_season }}/{{ $video->url_chapter }}">
+                                    href="/inicio/{{ $post->url }}/{{ $season->url_season }}/{{ $video->url_chapter }}">
                                     {{ $video->chapter }}
                                 </a>
                             </p>
